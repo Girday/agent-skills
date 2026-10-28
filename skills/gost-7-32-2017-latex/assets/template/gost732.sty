@@ -1,0 +1,142 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost732}[2026/10/28 Research report layout]
+\RequirePackage{iftex}
+\ifPDFTeX\PackageError{gost732}{Use XeLaTeX or LuaLaTeX}{Unicode fonts are required}\fi
+\RequirePackage{fontspec}
+\RequirePackage{polyglossia}
+\setdefaultlanguage[forceheadingpunctuation=false]{russian}
+\setotherlanguage{english}
+\newcommand\GostFontName{Times New Roman}
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+  \newfontfamily\cyrillicfont{Times New Roman}
+}{
+  \IfFontExistsTF{Liberation Serif}{
+    \renewcommand\GostFontName{Liberation Serif}
+    \setmainfont{Liberation Serif}
+    \newfontfamily\cyrillicfont{Liberation Serif}
+  }{
+    \renewcommand\GostFontName{CMU Serif}
+    \setmainfont{CMU Serif}
+    \newfontfamily\cyrillicfont{CMU Serif}
+  }
+  \PackageWarningNoLine{gost732}{Times New Roman unavailable; using \GostFontName}
+}
+\RequirePackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\RequirePackage[a4paper,left=30mm,right=15mm,top=20mm,bottom=20mm,footskip=10mm]{geometry}
+\RequirePackage{amsmath}
+\RequirePackage{graphicx,array,longtable,caption,indentfirst,etoolbox}
+\RequirePackage[hidelinks,unicode]{hyperref}
+\hypersetup{pdflang=ru-RU}
+
+\makeatletter
+% Exact bp values are this template's interpretation of line spacing.
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{14bp}{21bp}%
+  \abovedisplayskip=21bp \belowdisplayskip=21bp
+  \abovedisplayshortskip=21bp \belowdisplayshortskip=21bp}
+\renewcommand\small{\@setfontsize\small{12bp}{14.4bp}}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{12bp}{14.4bp}}
+\newcommand\GostSingle{\fontsize{14bp}{16.8bp}\selectfont}
+\setlength\parindent{12.5mm}
+\setlength\parskip{0pt}
+\setlength\emergencystretch{2em}
+\pagestyle{plain}
+\renewcommand\@oddfoot{\normalfont\normalsize\hfil\thepage\hfil}
+\let\@evenfoot\@oddfoot
+\let\@oddhead\@empty
+\let\@evenhead\@empty
+\newcommand\GostNoHyphen{\hyphenpenalty=10000\exhyphenpenalty=10000}
+\renewcommand\@makechapterhead[1]{%
+  {\parindent=0pt\raggedright\normalfont\normalsize\bfseries\GostNoHyphen
+   \noindent\hspace*{12.5mm}\thechapter\quad #1\par\nobreak\vskip21bp}}
+\renewcommand\@makeschapterhead[1]{%
+  {\parindent=0pt\centering\normalfont\normalsize\bfseries\GostNoHyphen
+   #1\par\nobreak\vskip21bp}}
+\renewcommand\section{\@startsection{section}{1}{12.5mm}{21bp}{10.5bp}{\normalfont\normalsize\bfseries\GostNoHyphen}}
+\renewcommand\subsection{\@startsection{subsection}{2}{12.5mm}{21bp}{10.5bp}{\normalfont\normalsize\GostNoHyphen}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{12.5mm}{21bp}{10.5bp}{\normalfont\normalsize\GostNoHyphen}}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\newlength\gosttocstep
+\AtBeginDocument{\settowidth\gosttocstep{00}}
+\renewcommand\l@chapter{\@dottedtocline{0}{0pt}{1.7em}}
+\renewcommand\l@section{\@dottedtocline{1}{\gosttocstep}{3em}}
+\renewcommand\l@subsection{\@dottedtocline{2}{2\gosttocstep}{4em}}
+\newcommand\l@goststruct{\@dottedtocline{0}{0pt}{0pt}}
+\newcommand\l@gostappendix{\@dottedtocline{0}{0pt}{0pt}}
+\def\toclevel@goststruct{0}
+\def\toclevel@gostappendix{0}
+\newcommand\GostStructural[1]{\chapter*{#1}\phantomsection\addcontentsline{toc}{goststruct}{#1}}
+\newcommand\GostTOC{\chapter*{СОДЕРЖАНИЕ}{\GostNoHyphen\@starttoc{toc}}}
+\renewcommand\footnoterule{\kern-3pt\hrule width .25\textwidth height .4pt\kern2.6pt}
+\renewcommand\@makefntext[1]{\parindent12.5mm\noindent\hspace*{12.5mm}\@makefnmark\,#1}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
+\newcommand\GostNumberWithinSections{%
+  \counterwithin{figure}{chapter}\counterwithin{table}{chapter}\counterwithin{equation}{chapter}}
+\newwrite\gostmetrics
+\AtBeginDocument{%
+ \normalsize
+ \immediate\openout\gostmetrics=\jobname.gostmetrics
+ \immediate\write\gostmetrics{font=\GostFontName}
+ \immediate\write\gostmetrics{font_pt=\f@size}
+ \immediate\write\gostmetrics{baseline_pt=\strip@pt\baselineskip}
+ \immediate\write\gostmetrics{paperwidth_pt=\strip@pt\paperwidth}
+ \immediate\write\gostmetrics{paperheight_pt=\strip@pt\paperheight}
+ \immediate\write\gostmetrics{textwidth_pt=\strip@pt\textwidth}
+ \immediate\write\gostmetrics{textheight_pt=\strip@pt\textheight}
+ \immediate\write\gostmetrics{left_pt=\strip@pt\dimexpr1in+\hoffset+\oddsidemargin\relax}
+ \immediate\write\gostmetrics{top_pt=\strip@pt\dimexpr1in+\voffset+\topmargin+\headheight+\headsep\relax}
+ \immediate\write\gostmetrics{parindent_pt=\strip@pt\parindent}
+ \immediate\closeout\gostmetrics}
+\makeatother
+
+\DeclareCaptionLabelSeparator{gostdash}{\space—\space}
+\DeclareCaptionFont{gost}{\fontsize{14bp}{16.8bp}\selectfont\hyphenpenalty=10000\exhyphenpenalty=10000}
+\captionsetup{font=gost,labelfont=normalfont,textfont=normalfont,labelsep=gostdash}
+\captionsetup[figure]{name=Рисунок,justification=centering,singlelinecheck=false,position=bottom}
+\captionsetup[table]{name=Таблица,justification=raggedright,singlelinecheck=false,position=top}
+\setlength\LTleft{0pt}
+\setlength\LTright{\fill}
+\setlength\LTcapwidth{\textwidth}
+
+% Avoid titlepage's page-counter reset.
+\newenvironment{GostTitlePage}{\clearpage\thispagestyle{empty}\GostSingle}{\par\clearpage\normalsize}
+\newcommand\GostKeywords[1]{\par{\parindent=0pt\raggedright\GostNoHyphen\MakeUppercase{#1}\par}}
+\newcommand\GostNote[1]{\par\indent Примечание — #1\par}
+\newenvironment{GostNotes}{\par\indent Примечания\par\begin{list}{\arabic{enumi}}{\usecounter{enumi}\setlength\leftmargin{20mm}\setlength\labelwidth{5mm}\setlength\labelsep{2.5mm}\renewcommand\makelabel[1]{##1\hfil}\setlength\itemindent{0pt}\setlength\itemsep{0pt}\setlength\parsep{0pt}}}{\end{list}}
+\newenvironment{GostDashes}{\begin{list}{—}{\setlength\leftmargin{20mm}\setlength\labelwidth{5mm}\setlength\labelsep{2.5mm}\renewcommand\makelabel[1]{##1\hfil}\setlength\itemindent{0pt}\setlength\itemsep{0pt}\setlength\parsep{0pt}}}{\end{list}}
+\newenvironment{GostNumbers}{\begin{list}{\arabic{enumi})}{\usecounter{enumi}\setlength\leftmargin{20mm}\setlength\labelwidth{5mm}\setlength\labelsep{2.5mm}\renewcommand\makelabel[1]{##1\hfil}\setlength\itemindent{0pt}\setlength\itemsep{0pt}\setlength\parsep{0pt}}}{\end{list}}
+\newcommand\GostWhere[1]{\par\indent где #1\par}
+
+\ExplSyntaxOn
+\NewExpandableDocumentCommand\GostCyrLetter{m}{
+ \int_compare:nNnTF {#1} > {25}
+  {\int_eval:n {#1-25}}
+  {\clist_item:nn {А,Б,В,Г,Д,Е,Ж,И,К,Л,М,Н,П,Р,С,Т,У,Ф,Х,Ц,Ш,Щ,Э,Ю,Я}{#1}}}
+\ExplSyntaxOff
+\newcounter{gostappendix}
+\renewcommand\thegostappendix{\GostCyrLetter{\value{gostappendix}}}
+\newcommand\GostAppendix[3]{%
+ \clearpage\refstepcounter{gostappendix}%
+ \xdef\GostCurrentAppendix{\thegostappendix}%
+ \setcounter{section}{0}\setcounter{subsection}{0}\setcounter{subsubsection}{0}%
+ \setcounter{figure}{0}\setcounter{table}{0}\setcounter{equation}{0}%
+ \renewcommand\thechapter{\GostCurrentAppendix}%
+ \renewcommand\theHchapter{app.\arabic{gostappendix}}%
+ \renewcommand\thefigure{\GostCurrentAppendix.\arabic{figure}}%
+ \renewcommand\thetable{\GostCurrentAppendix.\arabic{table}}%
+ \renewcommand\theequation{\GostCurrentAppendix.\arabic{equation}}%
+ \addcontentsline{toc}{gostappendix}{ПРИЛОЖЕНИЕ \GostCurrentAppendix\space (#2). #1}%
+ {\centering\bfseries\GostNoHyphen ПРИЛОЖЕНИЕ \GostCurrentAppendix\par
+  \normalfont (#2)\par\bfseries #1\par}\nobreak\vspace{21bp}%
+ \label{#3}}
+
+% Manual bibliography for a small verified source list; citations remain [n].
+\newcounter{gostsource}
+\newenvironment{GostSources}{\GostStructural{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}\setcounter{gostsource}{0}}{\par}
+\newcommand\GostSource[2]{\par\refstepcounter{gostsource}\label{#1}\indent\arabic{gostsource}.\space #2\par}
+\newcommand\GostCite[1]{[\ref{#1}]}

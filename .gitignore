@@ -1,0 +1,16 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+build/
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.gostmetrics
+*.synctex.gz
+.env
+.env.*

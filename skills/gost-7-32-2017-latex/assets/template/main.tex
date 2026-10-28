@@ -1,0 +1,79 @@
+\documentclass[14pt,a4paper,oneside]{extreport}
+\usepackage{gost732}
+\input{metadata}
+\begin{document}
+\input{title}
+
+% One author: omit a separate list under 5.2.2; provide their details on title.
+\GostStructural{РЕФЕРАТ}
+Отчёт [УКАЗАТЬ ОБЪЁМ] с., 1 кн., 1 рис., 2 табл., 1 источник, 1 прил.
+
+\GostKeywords{измерение, время, среднее значение, погрешность, повторяемость}
+
+Объект исследования — результаты повторного измерения времени.
+
+Цель работы — оценить среднее значение измеряемой величины.
+
+В работе использован метод повторных наблюдений. Получен пример расчёта среднего значения. Приведённые демонстрационные данные следует заменить фактическими результатами исследования.
+
+\GostTOC
+
+\GostStructural{ВВЕДЕНИЕ}
+Рассматривается определение среднего значения по результатам повторных измерений. Терминология единиц величин проверяется по использованному нормативному источнику \GostCite{src:units}.
+
+\chapter{Метод исследования}
+\section{Исходные данные}
+Результаты представлены в таблице~\ref{tab:data}. Схема обработки приведена на рисунке~\ref{fig:process}. Дополнительные сведения находятся в приложении~\ref{app:data}.
+
+\begin{table}[!htbp]
+\caption{Результат измерения}\label{tab:data}
+\centering
+\begin{tabular}{|>{\centering\arraybackslash}p{60mm}|>{\centering\arraybackslash}p{60mm}|}
+\hline
+Номер наблюдения & Время, с\\\hline
+1 & 10,1\\\hline
+2 & 10,3\\\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\setlength\unitlength{1mm}
+\begin{picture}(110,22)
+\put(0,4){\framebox(40,14){Наблюдения}}
+\put(40,11){\vector(1,0){25}}
+\put(65,4){\framebox(45,14){Среднее значение}}
+\end{picture}
+\caption{Последовательность обработки}\label{fig:process}
+\end{figure}
+
+\section{Расчёт}
+Среднее значение определяется по формуле~\eqref{eq:mean}.
+\begin{equation}\label{eq:mean}
+\overline{t}=\frac{1}{n}\sum_{i=1}^{n}t_i.
+\end{equation}
+\GostWhere{$\overline{t}$ — среднее время, с;\\
+$n$ — число наблюдений;\\
+$t_i$ — время отдельного наблюдения, с.}
+
+\GostNote{Вычисление следует повторить для фактических исходных данных.}
+
+\GostStructural{ЗАКЛЮЧЕНИЕ}
+Для двух демонстрационных наблюдений среднее время составляет 10,2 с. Выводы об эффективности и применимости требуют действительных результатов исследования.
+
+\begin{GostSources}
+\GostSource{src:units}{ГОСТ 8.417–2002. Государственная система обеспечения единства измерений. Единицы величин. [УКАЗАТЬ ПРОВЕРЕННОЕ ИЗДАНИЕ И СТАТУС].}
+\end{GostSources}
+
+\GostAppendix{Дополнительные данные}{справочное}{app:data}
+В таблице~\ref{tab:extra} показаны дополнительные наблюдения.
+\begin{table}[!htbp]
+\caption{Дополнительное наблюдение}\label{tab:extra}
+\centering
+\begin{tabular}{|p{60mm}|>{\centering\arraybackslash}p{60mm}|}
+\hline
+Наблюдение & Время, с\\\hline
+Контрольное & 10,2\\\hline
+\end{tabular}
+\end{table}
+\end{document}

@@ -1,0 +1,4 @@
+PyYAML>=6.0,<7
+ruff>=0.14,<1
+pdfplumber>=0.11,<1
+pypdf>=6,<7
