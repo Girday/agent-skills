@@ -8,9 +8,10 @@ Practical skills for AI agents: instructions, scripts, templates, and checks tha
 
 | Skill | What it does | Language / requirements |
 |---|---|---|
+| [build-agent-context](skills/build-agent-context/) | Turns archives, documents, messages, links, or a repository into task-focused agent context with source traceability, reading routes, current state, and handoff checks | User's language; Markdown; source-reading tools depend on input formats |
 | [gost-7-32-2017-latex](skills/gost-7-32-2017-latex/) | Creates and reviews research reports in LaTeX using GOST 7.32-2017: title pages, structure, equations, tables, references, appendices, and PDF checks | Russian; Python 3.10+ and XeLaTeX or LuaLaTeX; optional `pdfplumber` |
 
-Each skill is a separate folder with a `SKILL.md` entrypoint. Its scripts and resources live alongside it. The collection currently contains one skill; new entries are added when their workflows and examples are ready.
+Each skill is a separate folder with a `SKILL.md` entrypoint. Its scripts and resources live alongside it.
 
 ## Install in Codex
 
@@ -31,6 +32,23 @@ python3 scripts/install.py gost-7-32-2017-latex
 The local installer uses `$CODEX_HOME/skills`, or `~/.codex/skills` when `CODEX_HOME` is unset. It refuses to overwrite an existing installation. An installed copy is independent of the checkout; repository updates do not replace it automatically. If the skill does not appear, restart Codex. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills) for discovery and distribution options. This repository supplies skill sources; it is not a published plugin-directory listing.
 
 Other agents can use the instructions and resources if they support the `SKILL.md` format. Codex-specific desktop tools are optional conveniences, with a command-line workflow provided as a fallback.
+
+## Prepare agent context
+
+Install `build-agent-context` with the same installer, using its catalog name or GitHub folder, then ask:
+
+```text
+Use $build-agent-context. Prepare context from this archive so another agent
+can continue work on the project. Include the current requirements, evidence,
+unresolved conflicts, and a starting prompt. The receiving agent can read files.
+```
+
+The skill chooses between a self-contained document and a short entrypoint with topic files. It records what was actually read, preserves source locators, and distinguishes requirements, verified facts, assumptions, and current progress. It also handles updates to existing context. It has no mandatory runtime dependency; archives, scans, and other formats require suitable reading tools in the agent's environment.
+
+- [Research behind the workflow: 12 selected publications](skills/build-agent-context/references/research.md)
+- [Output patterns and worked examples](skills/build-agent-context/references/output-patterns.md)
+- [Quality checks and behavioral evaluation scenarios](skills/build-agent-context/references/quality-checks.md)
+- [Validation performed and limitations](skills/build-agent-context/references/validation.md)
 
 ## Use the GOST skill
 
