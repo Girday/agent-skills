@@ -2,6 +2,8 @@
 
 Practical skills for AI agents: instructions, scripts, templates, and checks that can be reused across projects.
 
+Developed with assistance from OpenAI Codex.
+
 [Русский](README.ru.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 ## Catalog
