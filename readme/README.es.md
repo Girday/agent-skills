@@ -11,6 +11,7 @@ Herramientas prácticas para agentes de IA: instrucciones, scripts, plantillas y
 | Habilidad | Función | Idioma y requisitos |
 |---|---|---|
 | [build-agent-context](../skills/build-agent-context/) | Convierte archivos, documentos, mensajes, enlaces y repositorios en contexto para una tarea, con fuentes, rutas de lectura, estado y comprobaciones de entrega | Idioma del usuario; Markdown; herramientas de lectura según el formato |
+| [transcribe-recording](../skills/transcribe-recording/) | Transcribe reuniones, ponencias, entrevistas y clases; comprueba los hablantes y prepara material con marcas de tiempo para contexto | Windows, Linux y macOS; faster-whisper en CPU/CUDA, MLX opcional en Apple Silicon |
 | [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Prepara y revisa informes de investigación en LaTeX según GOST 7.32-2017: portada, estructura, fórmulas, tablas, bibliografía, anexos y PDF | Ruso; Python 3.10+ y XeLaTeX o LuaLaTeX; `pdfplumber` opcional |
 
 Cada habilidad tiene su propia carpeta con un punto de entrada `SKILL.md`, scripts y recursos.

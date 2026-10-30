@@ -13,6 +13,7 @@ Developed with assistance from OpenAI Codex.
 | Skill | What it does | Language / requirements |
 |---|---|---|
 | [build-agent-context](skills/build-agent-context/) | Turns archives, documents, messages, links, or a repository into task-focused agent context with source traceability, reading routes, current state, and handoff checks | User's language; Markdown; source-reading tools depend on input formats |
+| [transcribe-recording](skills/transcribe-recording/) | Transcribes meetings, talks, interviews and classes; checks speakers and prepares timestamped material for context | Windows, Linux and macOS; faster-whisper on CPU/CUDA, optional MLX on Apple Silicon |
 | [gost-7-32-2017-latex](skills/gost-7-32-2017-latex/) | Creates and reviews research reports in LaTeX using GOST 7.32-2017: title pages, structure, equations, tables, references, appendices, and PDF checks | Russian; Python 3.10+ and XeLaTeX or LuaLaTeX; optional `pdfplumber` |
 
 Each skill is a separate folder with a `SKILL.md` entrypoint. Its scripts and resources live alongside it.
@@ -36,6 +37,23 @@ python3 scripts/install.py gost-7-32-2017-latex
 The local installer uses `$CODEX_HOME/skills`, or `~/.codex/skills` when `CODEX_HOME` is unset. It refuses to overwrite an existing installation. An installed copy is independent of the checkout; repository updates do not replace it automatically. If the skill does not appear, restart Codex. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills) for discovery and distribution options. This repository supplies skill sources; it is not a published plugin-directory listing.
 
 Other agents can use the instructions and resources if they support the `SKILL.md` format. Codex-specific desktop tools are optional conveniences, with a command-line workflow provided as a fallback.
+
+## Transcribe a recording
+
+Install `transcribe-recording` using its catalog name or GitHub folder, then ask:
+
+```text
+Use $transcribe-recording. Transcribe this meeting recording locally with
+speaker labels and timestamps, and prepare sources for follow-up context.
+Mark uncertain passages and report whether speaker separation was reliable.
+```
+
+The skill covers meetings, talks, interviews and classes. Local routes include
+faster-whisper on CPU or NVIDIA CUDA, and MLX on Apple Silicon. It preserves raw
+output and records gaps and review needs; automatic speaker labels are not proof
+of speaker identity. [Platform setup and commands](skills/transcribe-recording/references/local-workflow.md)
+and [validation limits](skills/transcribe-recording/references/validation.md)
+describe what was tested, including the lack of native Windows/Linux and CUDA runs.
 
 ## Prepare agent context
 
