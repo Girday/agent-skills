@@ -4,7 +4,7 @@ Practical skills for AI agents: instructions, scripts, templates, and checks tha
 
 Developed with assistance from OpenAI Codex.
 
-[Русский](README.ru.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+[Русский](readme/README.ru.md) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 [English](readme/README.en.md) · [中文](readme/README.zh.md) · [हिन्दी](readme/README.hi.md) · [Español](readme/README.es.md) · [العربية](readme/README.ar.md) · [Français](readme/README.fr.md) · [Português](readme/README.pt.md) · [Русский](readme/README.ru.md) · [বাংলা](readme/README.bn.md) · [Deutsch](readme/README.de.md)
 

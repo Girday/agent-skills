@@ -1,6 +1,6 @@
 # Contributing
 
-Add a skill under `skills/<lowercase-hyphenated-name>/`, then add its catalog entry to both READMEs. Explain the concrete task it handles and provide a realistic usage example.
+Add a skill under `skills/<lowercase-hyphenated-name>/`, then add its catalog entry to `README.md` and the translations under `readme/`. Explain the concrete task it handles and provide a realistic usage example.
 
 Keep `SKILL.md` focused on decisions and workflow. Place detailed references, reusable scripts, and templates in separate resources when they help. Make required dependencies explicit and provide a usable fallback for optional agent-specific tools.
 

@@ -2,6 +2,8 @@
 
 Полезные навыки для AI-агентов: инструкции, скрипты, шаблоны и проверки для повторного использования в разных проектах.
 
+Разрабатывается с помощью OpenAI Codex.
+
 [English](../README.md) · [Как добавить навык](../CONTRIBUTING.md) · [Лицензия MIT](../LICENSE)
 
 [English](README.en.md) · [中文](README.zh.md) · [हिन्दी](README.hi.md) · [Español](README.es.md) · [العربية](README.ar.md) · [Français](README.fr.md) · [Português](README.pt.md) · [Русский](README.ru.md) · [বাংলা](README.bn.md) · [Deutsch](README.de.md)
