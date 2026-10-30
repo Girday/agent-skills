@@ -1,59 +1,59 @@
-# LaTeX: реализация и расширение
+# LaTeX Implementation and Extensions
 
-## Базовый проект
+## Starter project
 
-`assets/template/` содержит `main.tex`, `metadata.tex`, `title.tex`, `gost732.sty`. Это однокнижный пример для XeLaTeX/LuaLaTeX, не заполненный отчёт. В `metadata.tex` видимые незаполненные поля; пример научных результатов не использовать как реальные данные. Требуются `extreport`, `fontspec`, `polyglossia`, `unicode-math`, `geometry`, `amsmath`, `graphicx`, `array`, `longtable`, `caption`, `indentfirst`, `etoolbox`, `hyperref`. Устанавливай отсутствующее только при необходимости и в разрешённой среде.
+`assets/template/` contains `main.tex`, `metadata.tex`, `title.tex`, and `gost732.sty`. This is a single-volume XeLaTeX/LuaLaTeX example, not a completed report. `metadata.tex` has visible unfilled fields; do not use demonstration research results as real data. Required packages: `extreport`, `fontspec`, `polyglossia`, `unicode-math`, `geometry`, `amsmath`, `graphicx`, `array`, `longtable`, `caption`, `indentfirst`, `etoolbox`, `hyperref`. Install missing packages only when necessary and in an authorized environment.
 
-Основной текст: 14 bp, базовые линии через 21 bp. Это фиксированная реализация выбранного полуторного набора, а не численное определение интервала в ГОСТ. Для согласования с Word/локальным нормоконтролем сравни результат, не умножай интервалы повторно через `setspace`. Одинарные блоки: 14/16,8 bp; сноски/малый шрифт: 12/14,4 bp. `bp` = 1/72 дюйма; TeX `pt` = 1/72,27 дюйма. Не путать при измерении PDF.
+Body text: 14 bp, baselines 21 bp apart. This is a fixed implementation of the selected one-and-a-half spacing, not a numerical GOST definition. Compare actual output for agreement with Word/local compliance review; do not multiply spacing again through `setspace`. Single-spaced blocks: 14/16.8 bp; footnotes/small text: 12/14.4 bp. `bp` = 1/72 inch; TeX `pt` = 1/72.27 inch. Distinguish them when measuring PDFs.
 
-`gost732.sty` выбирает TNR, затем явно предупреждает о замене на Liberation Serif/CMU Serif; математическая гарнитура Latin Modern Math разрешена как выбор реализации. Не встраивай нелицензированные файлы шрифта в выдаваемый проект.
+`gost732.sty` selects TNR, then explicitly warns about substitution with Liberation Serif/CMU Serif; Latin Modern Math is an allowed implementation choice. Do not embed unlicensed font files in the delivered project.
 
-## Семантика команд
+## Command semantics
 
-| Содержание отчёта | Команда | Примечание |
+| Report content | Command | Note |
 |---|---|---|
-| Раздел 1 | `\chapter{Название}` | Новая страница, номер и заголовок с абзаца |
-| Подраздел 1.1 | `\section{Название}` | Полужирный, с абзаца |
-| Пункт 1.1.1 | `\subsection{Название}` | Не делать один-единственный пункт; без заголовка нужен отдельный номер/абзац, а не пустой заголовок |
-| Подпункт 1.1.1.1 | `\subsubsection{Название}` | Аналогично; четыре уровня отсчитываются от chapter |
-| Структурный элемент | `\GostStructural{ВВЕДЕНИЕ}` | Прописной центр, новая страница, запись в toc |
-| Содержание | `\GostTOC` | Не включает само себя; начало со структурного заголовка |
-| Титул | `GostTitlePage` | Номер скрыт, счётчик не сбрасывается |
-| Ключевые слова | `\GostKeywords{первое, второе, …}` | 5–15 элементов проверить вручную |
-| Рисунок/таблица | `figure`/`table` и `\caption` | Подпись рисунка после графики/пояснений; таблицы до данных |
-| Ссылка на объект | `рисунок~\ref{fig:key}` | Для таблиц/приложений соответствующее полное слово |
-| Формула | `equation` + `\label`, `\eqref` | Центр, номер справа, круглые скобки |
-| Расшифровка | `\GostWhere{...}` | Начинается «где» без двоеточия, каждый символ с новой строки |
-| Примечание | `\GostNote{Текст}` | С абзаца; одно без номера |
-| Несколько примечаний | `GostNotes` + `\item` | Номера без точки |
-| Тире/числа | `GostDashes` / `GostNumbers` | Вложение числового списка в числовой нуждается в отдельном счётчике, не использовать общий `enumi` слепо |
-| Приложение | `\GostAppendix{Заголовок}{статус}{app:key}` | Новая страница, кириллическая буква, сброс номеров объектов, статус/название в toc |
-| Источники | `GostSources`, `\GostSource{src:key}{описание}` | Вручную в порядке первого цитирования; номера с точкой |
-| Отсылка к источнику | `\GostCite{src:key}` | Квадратные скобки; реальные метаданные проверить |
+| Section 1 | `\chapter{Название}` | New page, number and heading at paragraph indent |
+| Subsection 1.1 | `\section{Название}` | Bold, paragraph indent |
+| Clause 1.1.1 | `\subsection{Название}` | Do not create a sole clause; an untitled clause needs a separate number/paragraph, not an empty heading |
+| Subclause 1.1.1.1 | `\subsubsection{Название}` | Same; four levels counted from chapter |
+| Structural element | `\GostStructural{ВВЕДЕНИЕ}` | Uppercase, centered, new page, toc entry |
+| Contents | `\GostTOC` | Does not include itself; starts with structural heading |
+| Title page | `GostTitlePage` | Number hidden, counter not reset |
+| Keywords | `\GostKeywords{первое, второе, …}` | Manually check 5–15 items |
+| Figure/table | `figure`/`table` and `\caption` | Figure caption after graphic/explanations; table caption before data |
+| Object reference | `рисунок~\ref{fig:key}` | Corresponding full word for tables/appendices |
+| Equation | `equation` + `\label`, `\eqref` | Centered, number right, parentheses |
+| Symbol explanations | `\GostWhere{...}` | Starts with “где” without colon; each symbol on a new line |
+| Note | `\GostNote{Текст}` | Paragraph indent; sole note unnumbered |
+| Multiple notes | `GostNotes` + `\item` | Numbers without periods |
+| Dashes/numbers | `GostDashes` / `GostNumbers` | Nested numbered lists need a separate counter; do not blindly share `enumi` |
+| Appendix | `\GostAppendix{Заголовок}{статус}{app:key}` | New page, Cyrillic letter, object counters reset, status/title in toc |
+| Sources | `GostSources`, `\GostSource{src:key}{описание}` | Manually ordered by first citation; numbers with periods |
+| Source citation | `\GostCite{src:key}` | Square brackets; verify actual metadata |
 
-Для деления только на пункты или разделов без подразделов адаптируй счётчики/команды осознанно по 6.4.2–6.4.4. Не создавай фиктивный уровень ради вида номера. Заголовки не заканчивать точкой; несколько предложений могут иметь внутреннюю точку. Шаблон подавляет переносы слов в заголовках/подписях, но чрезмерно длинное слово всё ещё может выйти за поле.
+For clause-only division or sections without subsections, deliberately adapt counters/commands under 6.4.2–6.4.4. Do not create a fictitious level merely for number appearance. Headings do not end with periods; multiple sentences may have internal periods. The template suppresses word hyphenation in headings/captions, but an excessively long word can still exceed margins.
 
-По умолчанию рисунки/таблицы/формулы сквозные, вне сброса `chapter`. Для номеров внутри раздела вызови `\GostNumberWithinSections` в преамбуле. Внутри приложения номер А.1 и т.д.; не вызывать `\chapter` в приложении, его разделы начинают `\section` (А.1). Не смешивать кириллическую А и латинскую A в выводимых номерах. Идентификаторы `label` могут быть латинскими.
+By default, figures/tables/equations use continuous numbering, independent of `chapter` resets. For section-based numbering, call `\GostNumberWithinSections` in the preamble. Within appendices, numbers are А.1, etc.; do not call `\chapter` in an appendix; start its sections with `\section` (А.1). Do not mix Cyrillic А with Latin A in displayed numbers. `label` identifiers may use Latin letters.
 
-## Титульные варианты
+## Title-page variants
 
-Шаблон показывает совпадающие названия НИР/отчёта и один гриф. При отличающихся названиях добавь название НИР с первой прописной, затем строку «по теме:» и прописное название отчёта. При промежуточном отчёте укажи этап в скобках после вида. Для нескольких книг добавь «Книга N» под видом. Для двух грифов используй две `minipage` по 0,47 ширины: согласование слева, утверждение справа. Сверь блоки с 6.10, не увеличивай межблочные расстояния произвольно.
+The template shows matching research/report titles and one approval block. For differing titles, add the research title with an initial capital, then “по теме:” and the uppercase report title. For interim reports, add the stage in parentheses after the type. For multiple volumes, add “Книга N” below the type. For two endorsement/approval blocks, use two `minipage` blocks of 0.47 width: endorsement left, approval right. Check blocks against 6.10; do not arbitrarily enlarge block spacing.
 
-При одном исполнителе укажи его должность/степень/звание/инициалы/фамилию на титуле. Роль исполнителя и научного руководителя не считать совпадающей без факта. Отдельного списка при одном исполнителе нет. При команде добавь структурный элемент списка, строки из трёх колонок без видимой сетки: должности; места для подписей/дат; имена с участками работы; внешним участникам организацию.
+For one contributor, put their position/degree/academic title/initials/surname on the title page. Do not equate contributor and research-supervisor roles without evidence. There is no separate contributor list for one person. For a team, add a structural contributor-list element with three columns and no visible grid: positions; space for signatures/dates; names and work sections; organization for external participants.
 
-Если подписи не помещаются, добавь продолжение по 6.10.1 с требуемыми фразами; город/год только на первом листе. Дополнительный лист включай в общий счёт. Вопрос скрытия номера на продолжении отметь как выбранную трактовку и проверь у организации, поскольку 6.3.2 не описывает его отдельно. Печатные чёрные линии оставляют место для реальных синих подписей и печатей.
+If signatures do not fit, add continuation under 6.10.1 with the required phrases; city/year only on the first sheet. Include the extra sheet in pagination. Record hiding its page number as a selected interpretation and check with the organization, since 6.3.2 does not address it separately. Printed black lines reserve space for real blue signatures and seals.
 
-## Термины и сокращения
+## Terms and abbreviations
 
-Вводная фраза терминов: «В настоящем отчете о НИР применяют следующие термины с соответствующими определениями».
+Terms introduction: “В настоящем отчете о НИР применяют следующие термины с соответствующими определениями”.
 
-Вводная фраза сокращений: «В настоящем отчете о НИР применяют следующие сокращения и обозначения».
+Abbreviations introduction: “В настоящем отчете о НИР применяют следующие сокращения и обозначения”.
 
-Далее алфавитный список без абзацного отступа: термин/сокращение, тире, раскрытие, без конечной пунктуации. Для ровно трёх обозначений зафиксируй решение по локальным правилам. Русский буквенный список использует тот же набор букв, что приложения, в нижнем регистре: `а, б, в, г, д, е, ж, и, к, л, м, н, п, р, с, т, у, ф, х, ц, ш, щ, э, ю, я`; маркер со скобкой.
+Follow with an alphabetical list without paragraph indent: term/abbreviation, dash, explanation, no final punctuation. For exactly three symbols, record the choice under local rules. A Russian lettered list uses the same letters as appendices, in lowercase: `а, б, в, г, д, е, ж, и, к, л, м, н, п, р, с, т, у, ф, х, ц, ш, щ, э, ю, я`; marker with closing parenthesis.
 
-## Продолжение таблицы
+## Table continuation
 
-Не помещай многостраничную таблицу в плавающий `table`. `longtable` сам управляет страницами. Название только первой части, дальше «Продолжение таблицы N»; не использовать `\caption` на каждой части, это создаёт ложные номера/записи.
+Do not put a multipage table in a floating `table`. `longtable` manages pages itself. Title only over the first part, then “Продолжение таблицы N”; do not use `\caption` on every part, as it creates false numbers/entries.
 
 ```latex
 В таблице~\ref{tab:long} приведены результаты наблюдений.
@@ -67,16 +67,16 @@
 \hline\endfoot
 \hline\endlastfoot
 Первое & 1\\
-% Другие строки с фактическими данными
+% More rows with actual data
 Последнее & 2\\
 \end{longtable}
 ```
 
-Две колонки по 75 мм вместе с межколоночными пробелами и линиями укладываются в 165 мм текста. Рассчитывай ширину с учётом `tabcolsep`/линий. Если требуется меньше основного шрифта, локально `\small`, не `resizebox` всей таблицы; проверь читаемость. `longtable` может требовать дополнительного прохода для ширин колонок. Одинарный интервал обязателен для многострочной подписи, не автоматически для всего тела таблицы.
+Two 75 mm columns plus intercolumn space and rules fit within 165 mm of text width. Account for `tabcolsep`/rules. If a smaller font is needed, use local `\small`, not `resizebox` on the entire table; check readability. `longtable` may require another pass for column widths. Single spacing is mandatory for multiline captions, not automatically the whole table body.
 
-## Формулы
+## Equations
 
-Пояснять символы по порядку, а не алфавиту. Для длинной формулы:
+Explain symbols in occurrence order, not alphabetically. For a long equation:
 
 ```latex
 \begin{equation}
@@ -87,14 +87,14 @@ S &= a_1+a_2+a_3+{}\\
 \end{equation}
 ```
 
-Знак в конце первой строки повторён в начале следующей. Знак умножения при переносе `\times`, не точка/звёздочка. Математическая пунктуация связана с предложением. Не скрывать всю строку в `\small` ради размещения; менять разбиение.
+The sign at the end of the first line repeats at the start of the next. Use `\times` at multiplication breaks, not a dot/asterisk. Mathematical punctuation follows the sentence. Do not hide an entire line in `\small` to make it fit; change line breaks.
 
-## Библиография
+## Bibliography
 
-Для короткого проверенного списка ручные команды шаблона исключают лишнюю зависимость. Они **не сортируют автоматически**: порядок записей должен совпадать с первыми отсылками. Номера с точкой, текстовые ссылки в скобках; не подменять одно оформление другим. Для больших списков допустим `biblatex`/`biber` с проверенным стилем, `sorting=none`, числовыми ссылками и настройкой точки после номера списка. `build.py` не запускает biber: выполнить его отдельно, затем повторить LaTeX до стабильности. Сверить каждую запись с действующими применимыми стандартами, не только названием стиля.
+For short verified lists, manual template commands avoid an extra dependency. They **do not sort automatically**: entries must follow first-citation order. List numbers have periods; text references have brackets; do not substitute one format for the other. Large lists may use `biblatex`/`biber` with a checked style, `sorting=none`, numeric citations, and a period after each list number. `build.py` does not run biber: run it separately, then rerun LaTeX until stable. Check every entry against current applicable standards, not just the style name.
 
-## A3 и несколько книг
+## A3 and multiple volumes
 
-Шаблон по умолчанию только A4. Для A3 нужен фактический размер страницы PDF 297×420 мм (либо поворот), подходящие поля и пагинация; одного `landscape`, `resizebox` или `newgeometry` недостаточно для смены MediaBox. В XeLaTeX меняется драйверный `papersize`, в LuaLaTeX размеры страницы движка; после листа восстановить A4 и проверить обе стороны перехода. Можно включить подготовленный A3 PDF через подходящий механизм с сохранением физического размера и корректным номером. При такой задаче реализовать и проверить конкретный способ на фактическом движке; этот пример не объявляется готовой автоматизацией смешанных форматов.
+The default template is A4 only. A3 requires actual PDF page size 297×420 mm (or rotated), suitable margins, and pagination; `landscape`, `resizebox`, or `newgeometry` alone does not change MediaBox. XeLaTeX changes driver `papersize`; LuaLaTeX changes engine page dimensions; restore A4 afterward and check both sides of the transition. A prepared A3 PDF can be included through a suitable mechanism preserving physical size and correct page number. Implement and verify the specific method on the actual engine for such tasks; this example is not ready-made mixed-format automation.
 
-Для нескольких книг отдельный проект каждой, свои титул/содержание/объекты; первая содержит общую структуру с номерами книг (допустимы лишь названия последующих). Согласовать общие названия и статистику реферата. Сквозность внутри отчёта из 6.3.1 нельзя молча заменить сбросом каждого файла; решение о счёте между книгами зафиксировать с организацией. При общем счёте явно задать `\setcounter{page}{N}` и проверить стыки, аудит отдельных книг тогда требует адаптации ожидаемых физических номеров. Не заявлять многокнижный отчёт проверенным по однокнижному примеру.
+For multiple volumes, use a separate project for each, with its own title/contents/objects; the first contains the overall structure with volume numbers (later volumes' titles alone are permitted). Reconcile shared titles and abstract statistics. Do not silently replace report-wide continuity under 6.3.1 with per-file resets; record the cross-volume pagination decision with the organization. For overall numbering, explicitly set `\setcounter{page}{N}` and check joins; individual-volume audits then require adapted expected physical page numbers. Do not claim multi-volume validation from a single-volume example.

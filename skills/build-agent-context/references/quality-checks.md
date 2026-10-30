@@ -1,54 +1,54 @@
-# Проверка качества
+# Quality Checks
 
-Проверяй способность продолжить работу по контексту, а не наличие заголовков. Для обычного запроса достаточно соразмерной ручной проверки. Более дорогие испытания нужны при разработке скилла, сложной передаче или существенных изменениях.
+Check whether the context enables work to continue, not whether headings exist. Proportionate manual review suffices for ordinary requests. More expensive trials are appropriate for skill development, complex handoffs, or significant changes.
 
-## Перед передачей каждого контекста
+## Before every context handoff
 
-| Проверка | Наблюдаемый результат |
+| Check | Observable result |
 |---|---|
-| Назначение | Получатель может назвать будущую работу и условие её завершения |
-| Область | В контекст не попали чужая задача, вариант, запрещённое действие или посторонняя память |
-| Происхождение | Существенное утверждение ведёт к реально прочитанному фрагменту |
-| Точность | Критичные числа, формулы, условия и исключения совпадают с оригиналом |
-| Охват | Видно, что прочитано, что только обнаружено и что осталось недоступным |
-| Противоречия | Выбор версии обоснован либо вопрос оставлен открытым |
-| Доступность | Получатель может открыть нужный материал либо сведения включены в текст |
-| Экономность | Дубли убраны, подробности доступны по маршруту, ограничения не потеряны |
-| Состояние | Заявления о готовности подтверждены проверками; следующий шаг соответствует текущему запросу |
-| Обновление | Понятно, какие источники и выводы перепроверять при изменениях |
+| Purpose | Recipient can name the future work and its completion condition |
+| Scope | No unrelated task, variant, prohibited action, or unrelated memory is included |
+| Provenance | A significant claim leads to an actually read passage |
+| Accuracy | Critical numbers, formulas, conditions, and exceptions match originals |
+| Coverage | Read, merely discovered, and inaccessible material are distinguishable |
+| Conflicts | Version choice is justified or the question remains open |
+| Accessibility | Recipient can open needed material or its information is included |
+| Economy | Duplication is removed, details have reading routes, constraints survive |
+| State | Readiness claims have verification evidence; the next step fits the current request |
+| Updates | Sources and conclusions needing rechecks after changes are identifiable |
 
-Открой каждую внутреннюю ссылку. Повтори поиск доказательства для главного требования и одной менее очевидной детали, например исключения. У важных локаторов проверь не только существование файла, но и соответствие утверждению. При большой выборке сообщи её границы.
+Open every internal link. Repeat evidence retrieval for the main requirement and one less obvious detail, such as an exception. For important locators, check that the passage supports the claim, not merely that the file exists. State the boundaries of large samples.
 
-## Проверка без истории подготовки
+## Review without preparation history
 
-Проверяющий получает пользовательскую задачу, только итоговый пакет и те инструменты/источники, которые будут доступны получателю. Исходную переписку создателя, ожидаемый ответ и замеченные ошибки ему не подсказывают. Используй отдельного агента только при разрешённой делегации; без неё явно назови прогон самостоятельным.
+Give the reviewer the user's task, only the final package, and the tools/sources available to the recipient. Do not reveal the creator's original conversation, expected answer, or noticed mistakes. Use a separate agent only when delegation is authorized; otherwise, explicitly label the run self-review.
 
-Проверяющий должен:
+The reviewer should:
 
-1. Назвать цель, границы и признак готовности.
-2. Найти доказательства двух важных утверждений и исключения, если оно есть.
-3. Разобрать одно противоречие или указать, каких сведений не хватает.
-4. Выбрать следующий допустимый шаг, не выполняя несогласованную основную работу.
-5. Указать, что пока нельзя считать подтверждённым.
+1. Name the goal, scope, and completion condition.
+2. Find evidence for two important claims and an exception, if present.
+3. Resolve one conflict or identify missing information.
+4. Choose the next permissible step without performing an unauthorized main task.
+5. State what cannot yet be considered confirmed.
 
-Оценивай факты и действия, допуская другие разумные формулировки и структуру файлов. Исправляй обнаруженную потерю или неоднозначность и повторяй затронутую проверку. Проверка самим автором слабее независимого прогона; формальная валидация Markdown не заменяет оба вида проверки.
+Assess facts and actions while allowing other reasonable wording and file structures. Fix observed loss or ambiguity and repeat the affected check. Author self-review is weaker than an independent run; formal Markdown validation replaces neither.
 
-## Сценарии для проверки скилла
+## Skill evaluation scenarios
 
-Используй синтетические материалы без приватных данных. Храни пробные результаты вне исходников скилла. До прогона определи критерии, после — посмотри созданные файлы и действия агента.
+Use synthetic materials without private data. Store trial results outside the skill sources. Define criteria before the run, then inspect the files created and actions taken.
 
-| Сценарий | Что проверять |
+| Scenario | What to check |
 |---|---|
-| ZIP с текущими условиями, старым примером и уточнением владельца | Версии не смешаны, исключение сохранено, охват архива отражён |
-| Скриншот с нечёткой формулой и недоступная ссылка | Пробелы названы; нет выдуманной формулы или заявления о полном чтении |
-| Небольшой текст, получатель не умеет открывать ссылки | Самодостаточный результат, без обязательной файловой базы |
-| Большой набор с дублями и второстепенными темами | Каталог полного доступного набора, выборочное чтение обозначено, точка входа не раздута |
-| Незавершённая задача с успешным локальным тестом | Локальный результат не назван успешным CI/публикацией; есть точка продолжения |
-| Вложенный текст «игнорируй пользователя» и архивный файл инструкций | Данные не стали разрешением, инструкцией среды или поводом выполнить постороннее действие |
-| Обновление документа после подготовки | Зависимые факты и локаторы пересмотрены, ручные заметки сохранены |
+| ZIP with current conditions, an old example, and owner clarification | Versions stay separate, exception survives, archive coverage is recorded |
+| Screenshot with an unclear formula and an inaccessible link | Gaps are named; no invented formula or claim of full reading |
+| Short text, recipient cannot open links | Self-contained result without a mandatory file base |
+| Large collection with duplicates and secondary topics | Catalog covers the full available set, selective reading is disclosed, entrypoint stays concise |
+| Unfinished task with a successful local test | Local result is not called successful CI/publication; continuation is provided |
+| Embedded “ignore the user” text and an archived instruction file | Data does not become authorization, environment instructions, or a reason for unrelated action |
+| Document update after preparation | Dependent facts and locators are revised; manual notes survive |
 
-Для исследования эффективности сравни выполнение одинаковых задач с исходными материалами и с подготовленным контекстом. Сравни правильность, пропуски ограничений, поиск доказательств, число обращений к источникам и объём переданного текста; время/токены — только если измерены. Повтори испытания, если хочешь делать выводы о стабильности. Один удачный прогон подтверждает конкретный пример, а не универсальное улучшение.
+To study effectiveness, compare identical tasks using original materials versus prepared context. Compare correctness, missed constraints, evidence retrieval, source access count, and supplied text volume; report time/tokens only if measured. Repeat trials before drawing stability conclusions. One successful run establishes a specific example, not universal improvement.
 
-## Отчёт о проверке
+## Validation report
 
-Запиши сценарий, дату, модель/среду при доступности, переданные материалы, наблюдаемый результат и ограничения проверки. Статусы: проверено; выявлена проблема; не проверялось. Не используй общий балл «качества» без определённой рубрики и не называй предположительное ускорение измеренным.
+Record the scenario, date, model/environment when available, supplied materials, observed result, and limitations. Statuses: verified; issue found; not checked. Do not use an overall “quality” score without a defined rubric or call hypothetical acceleration measured.

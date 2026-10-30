@@ -1,4 +1,4 @@
 interface:
-  display_name: "Расшифровка записей"
-  short_description: "Аудио и видео: текст, говорящие и вход для контекста"
-  default_prompt: "Используй $transcribe-recording: расшифруй запись с таймкодами, проверь разделение говорящих и подготовь материалы для дальнейшей работы агента."
+  display_name: "Transcribe Recordings"
+  short_description: "Audio and video: text, speakers, and context inputs"
+  default_prompt: "Use $transcribe-recording to transcribe the recording with timestamps, check speaker separation, and prepare materials for further agent work."

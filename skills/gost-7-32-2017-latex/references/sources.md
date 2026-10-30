@@ -1,46 +1,46 @@
-# Источники и редакция
+# Sources and Edition
 
-Проверено 28.10.2026. Для нового нормативного проекта перепроверь карточку Росстандарта. При отсутствии сети явно используй зафиксированную здесь редакцию.
+Verified on October 28, 2026. For a new normative project, recheck the Rosstandart record. Without network access, explicitly use the edition recorded here.
 
-1. [Официальная карточка Росстандарта](https://protect.gost.ru/gost/details/7d280e43-7036-4a69-8e6e-d15867028343): действует; введён в РФ 01.07.2018 приказом 1494-ст от 24.10.2017; взамен ГОСТ 7.32-2001; перечислены три поправки.
-2. [Скан официального переиздания 2018 года на сайте ГУАП](https://docs.guap.ru/regdocs/stands/gost_7-32-2017_ver-2018.pdf): 38 физических страниц с поправками, дублями и пустыми страницами. Это копия стандарта, не собственная методичка вуза. Посторонние надписи на обложке не являются нормой. SHA-256: `81c91e6b4a2f3bd7908f40ffc54081b81ffac60fbb36e4fc06025b46f878f767`.
-3. Официальные карточки: [ИУС 2–2019](https://protect.gost.ru/gost/changesdetails/9b2fa476-b921-443a-b00b-4f6e5e07b723), [ИУС 3–2020](https://protect.gost.ru/gost/changesdetails/27e7dd44-495b-4625-bc4d-ce24bfe6ffc7), [ИУС 1–2022](https://protect.gost.ru/gost/changesdetails/775a0bc1-a1db-4292-9440-485af1ef885a).
+1. [Official Rosstandart record](https://protect.gost.ru/gost/details/7d280e43-7036-4a69-8e6e-d15867028343): in force at verification; introduced in Russia on July 1, 2018 by order 1494-ст of October 24, 2017; replaces GOST 7.32-2001; lists three corrections.
+2. [Scan of the official 2018 reprint on the GUAP website](https://docs.guap.ru/regdocs/stands/gost_7-32-2017_ver-2018.pdf): 38 physical pages with corrections, duplicates, and blank pages. A copy of the standard, not the university's own guide. Extraneous cover inscriptions are not normative. SHA-256: `81c91e6b4a2f3bd7908f40ffc54081b81ffac60fbb36e4fc06025b46f878f767`.
+3. Official records: [ИУС 2–2019](https://protect.gost.ru/gost/changesdetails/9b2fa476-b921-443a-b00b-4f6e5e07b723), [ИУС 3–2020](https://protect.gost.ru/gost/changesdetails/27e7dd44-495b-4625-bc4d-ce24bfe6ffc7), [ИУС 1–2022](https://protect.gost.ru/gost/changesdetails/775a0bc1-a1db-4292-9440-485af1ef885a).
 
-Полный скан/OCR не распространяется в skill. Аналитическая карта содержит пересказ норм с локаторами.
+The full scan/OCR is not distributed with the skill. The analytical map paraphrases rules with locators.
 
-| Поправка | Содержание и следствие |
+| Correction | Content and consequence |
 |---|---|
-| ИУС 2–2019 | В приложении Б исправлено слово на «Исполнители»; в В, примерах 1 и 2, ключевые слова приведены прописными. Числа/результаты образцов не меняют требования к данным нового отчёта |
-| ИУС 3–2020 | В предисловие, таблицу согласования, добавлена Армения, AM, Минэкономики Республики Армения. Поля/структура не меняются |
-| ИУС 1–2022 | Добавлен Азербайджан, AZ, Азстандарт; в листке дата введения 23.08.2021. Не путать с регистрацией поправки в карточке 25.01.2022. Поля/структура не меняются |
+| ИУС 2–2019 | Corrected a word in appendix Б to “Исполнители”; keywords in В, examples 1 and 2, changed to uppercase. Example numbers/results do not change data requirements for a new report |
+| ИУС 3–2020 | Added Armenia, AM, Ministry of Economy of the Republic of Armenia to the foreword's approval table. No margin/structure changes |
+| ИУС 1–2022 | Added Azerbaijan, AZ, Azstandard; the correction sheet gives August 23, 2021 as introduction date. Distinguish from correction registration on January 25, 2022. No margin/structure changes |
 
-| Печатная страница | Физическая страница PDF (с 1) | Содержание |
+| Printed page | Physical PDF page (1-based) | Content |
 |---|---|---|
-| II–III | 2–3 | Предисловие, содержание стандарта |
-| — | 4–6 | Три поправки; первая повёрнута |
-| 1–2 | 8–9 | Разделы 1–4; обязательность элементов дана жирным |
-| 3–6 | 10–13 | Раздел 5, начало 6.1 |
+| II–III | 2–3 | Foreword, standard contents |
+| — | 4–6 | Three corrections; first rotated |
+| 1–2 | 8–9 | Sections 1–4; mandatory elements bold |
+| 3–6 | 10–13 | Section 5, start of 6.1 |
 | 7–14 | 14–21 | 6.1–6.17 |
-| 15–19 | 22–26 | Обязательное А: пять титулов |
-| 20–21 | 27–28 | Обязательное Б: два списка исполнителей |
-| 22–23 | 29–30 | Обязательное В: два реферата |
-| 24 | 31 | Справочное Г: схема титула |
-| 25 | 32 | Справочное Д: список источников |
-| 26 | 33 | Справочное Е: виды библиографических описаний |
-| 27, выходные данные | 34–35 | Индексы/ключевые слова и издательские сведения самого стандарта |
+| 15–19 | 22–26 | Mandatory А: five title pages |
+| 20–21 | 27–28 | Mandatory Б: two contributor lists |
+| 22–23 | 29–30 | Mandatory В: two abstracts |
+| 24 | 31 | Informative Г: title-page diagram |
+| 25 | 32 | Informative Д: source list |
+| 26 | 33 | Informative Е: bibliographic description types |
+| 27, publication details | 34–35 | Indexes/keywords and publication details of the standard itself |
 
-Ошибки извлечения устранены по изображениям: в исключениях алфавита буква **З**, не цифра 3; А3 — бумага; жирное выделение раздела 4 нельзя восстановить из plain text. Список источников в разделе 4 **не выделен жирным**. Гарнитура «Ариал» в выходных данных самого стандарта не является предписанием для отчёта.
+Extraction errors were corrected against images: the excluded alphabet letter is **З**, not digit 3; А3 refers to paper; section 4 bold emphasis cannot be recovered from plain text. The source list in section 4 **is not bold**. “Ариал” in the standard's publication details does not prescribe the report font.
 
-## Ссылочные документы
+## Referenced documents
 
-Раздел 2 перечисляет ГОСТ 7.1–2003, 7.9–95, 7.11–2004, 7.12–93, 7.79–2000, 7.80–2000, 7.82–2001, 7.90–2007, 8.417–2002, 9327–60, 15.011–82, 15.101–98. Сноска для Беларуси — СТБ 7.12. Это ссылки редакции 2017 года, **не утверждение об их текущем статусе**.
+Section 2 lists GOST 7.1–2003, 7.9–95, 7.11–2004, 7.12–93, 7.79–2000, 7.80–2000, 7.82–2001, 7.90–2007, 8.417–2002, 9327–60, 15.011–82, 15.101–98. The Belarus footnote names СТБ 7.12. These are references in the 2017 edition, **not claims about their current status**.
 
-При замене/изменении применять заменяющий/изменённый стандарт; при отмене без замены — незатронутую ссылкой часть. Для реального библиографического, метрологического или патентного нормоконтроля проверь нужные документы в своей стране. Не представляй `biblatex-gost`, ГОСТ Р 7.0.100 или ГОСТ Р 7.0.5 как автоматически предписанные самим 7.32. Skill не пересказывает исчерпывающе внешние стандарты.
+Use replacement/amended standards when references change; if withdrawn without replacement, apply the part unaffected by the reference. For real bibliographic, metrological, or patent compliance review, check the required documents in the relevant country. Do not present `biblatex-gost`, GOST R 7.0.100, or GOST R 7.0.5 as automatically mandated by 7.32 itself. The skill does not exhaustively paraphrase external standards.
 
-Исторические названия министерств/организаций, фамилии, даты, числа из образцов не являются реквизитами текущего отчёта.
+Historical ministries/organizations, surnames, dates, and numbers in examples are not administrative data for a current report.
 
-## Служебные сведения самого стандарта
+## Administrative information about the standard itself
 
-Разработчик — ВИНИТИ РАН в рамках ТК 191; внесён Росстандартом; принят МГС по протоколу 103-П от 25.09.2017. В исходной таблице Казахстан/KZ/Госстандарт Республики Казахстан, Киргизия/KG/Кыргызстандарт, Россия/RU/Росстандарт; поправки добавили Армению и Азербайджан. Основополагающие документы предисловия — ГОСТ 1.0–2015 и 1.2–2015. Это сведения о принятии стандарта, не обязательные строки титула авторского отчёта.
+Developer: ВИНИТИ РАН within ТК 191; submitted by Rosstandart; adopted by the Interstate Council under protocol 103-П of September 25, 2017. The original table lists Kazakhstan/KZ/Госстандарт Республики Казахстан, Kyrgyzstan/KG/Кыргызстандарт, Russia/RU/Росстандарт; corrections added Armenia and Azerbaijan. Foundational foreword documents are GOST 1.0–2015 and 1.2–2015. These describe adoption of the standard, not mandatory title-page lines in an authored report.
 
-Классификация издания: МКС 01.140.20, УДК 001.891[047]:006.354; ключевые слова описывают сам стандарт. На обложке Москва, Стандартинформ, 2018; переиздание — февраль 2018. Выходные данные: редактор М.И. Максимова, технический редактор И.Е. Черепкова, корректор И.А. Королева, вёрстка Л.А. Круговой; подписано в печать 27.02.2018, формат 60×84 1/8, гарнитура Ариал, условных печатных листов 3,72, учётно-издательских 3,34, тираж 31, заказ 359. Эти параметры относятся к полиграфическому выпуску стандарта и **не переносятся** на отчёт: его параметры установлены разделом 6. Авторские/издательские предупреждения не превращают пользовательский документ в официальное издание ГОСТ. Имена и показатели примеров А–Е — демонстрационные данные, а не нормативные значения.
+Publication classification: ICS 01.140.20, UDC 001.891[047]:006.354; keywords describe the standard itself. Cover: Moscow, Standartinform, 2018; reprint February 2018. Publication details: editor М.И. Максимова, technical editor И.Е. Черепкова, proofreader И.А. Королева, layout Л.А. Круговой; signed for printing February 27, 2018, format 60×84 1/8, Arial font, 3.72 conventional printed sheets, 3.34 publisher's accounting sheets, print run 31, order 359. These describe the standard's printed publication and **do not transfer** to a report, whose parameters are set in section 6. Copyright/publisher notices do not turn a user's document into an official GOST edition. Names and values in examples А–Е are demonstration data, not normative values.

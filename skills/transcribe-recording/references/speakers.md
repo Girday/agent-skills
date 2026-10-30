@@ -1,19 +1,19 @@
-# Проверка говорящих
+# Speaker Checks
 
-Выбирай доступную локальную диаризацию, например Sherpa-ONNX или pyannote. Отдельно проверяй условия доступа и лицензии моделей. Для pyannote community-1 может требоваться принятие условий и токен; не обходи доступ и не проси прислать секрет в чат. Не загружай запись в облако как скрытый fallback.
+Choose available local diarization, such as Sherpa-ONNX or pyannote. Separately check model access conditions and licenses. Pyannote community-1 may require terms acceptance and a token; do not bypass access or ask for secrets in chat. Do not upload recordings to the cloud as a hidden fallback.
 
-До полной записи проверь фрагмент с реальным диалогом, короткими репликами и тихими участниками. Одноголосая проба проверяет запуск, но не различение людей. Если сверка на слух недоступна, это существенный предел проверки.
+Before processing the full recording, test an excerpt with real dialogue, short utterances, and quiet participants. A single-voice sample checks execution, not speaker discrimination. If listening review is unavailable, that is a significant validation limit.
 
-Сохраняй первичные интервалы, embeddings при наличии и параметры кластеризации. Проверяй:
+Preserve raw intervals, embeddings when available, and clustering parameters. Check:
 
-- не дробится ли один человек на множество групп при смене расстояния до микрофона;
-- не сливаются ли разные люди, особенно при усреднении признаков длинной реплики;
-- присутствуют ли короткие реплики и пересечения речи;
-- сохраняется ли одна метка для человека в начале и конце;
-- не представляют ли некоторые «люди» шум или фрагмент короче секунды.
+- whether one person splits into multiple clusters as microphone distance changes;
+- whether different people merge, particularly when features of long utterances are averaged;
+- whether short utterances and overlapping speech are retained;
+- whether the same person keeps a label at the beginning and end;
+- whether some “people” are noise or subsecond fragments.
 
-Известное число людей полезно как параметр модели и проверка. Само совпадение количества кластеров не доказывает разделение. Не подбирай порог только ради нужного числа. Подтверждённые пользователем образцы голосов помогают проверить соответствие; имена и роли заноси в отдельную таблицу с основанием. Отсутствие голоса в разметке не доказывает, что человек молчал.
+A known participant count is useful as a model parameter and check. Matching cluster count alone does not prove separation. Do not tune a threshold merely to obtain the desired count. User-confirmed voice samples help verify mappings; keep names and roles in a separate evidence-backed table. A voice's absence from labels does not prove the person was silent.
 
-Не соединяй независимые `SPEAKER_00` из разных частей без глобального сопоставления. Для совмещения ASR и диаризации используй временные метки слов, сохраняй несколько кандидатов при overlap и `UNKNOWN` при недостаточном соответствии. Не присваивай длинному сегменту одного человека, если внутри меняется голос. Любое автоматическое сопоставление сохраняй отдельно от ручной сверки.
+Do not join independent `SPEAKER_00` labels across chunks without global matching. Align ASR and diarization with word timestamps, retaining multiple candidates during overlap and `UNKNOWN` when alignment is insufficient. Do not assign a long segment to one person if the voice changes within it. Keep automatic alignment separate from manual review.
 
-Если доступный конвейер не разделяет людей, продолжай полезный экспорт ASR с `UNKNOWN`. В отчёте назови неудачные методы, проверенный охват и следующий различающий эксперимент. Не запускай повторно целиком многочасовую запись для каждого порога, если гипотезу можно проверить на выборке. Экспортёр этого скилла намеренно не принимает непроверенные метки диаризации; после успешной проверки дополняй рабочую копию стенограммы, сохраняя первичный пакет.
+If the available pipeline cannot separate people, continue useful ASR export with `UNKNOWN`. Report failed methods, reviewed coverage, and the next experiment that distinguishes hypotheses. Do not rerun an entire many-hour recording for each threshold when a sample can test the hypothesis. This skill's exporter intentionally does not accept unverified diarization labels; after successful review, augment a working transcript copy while preserving the raw package.

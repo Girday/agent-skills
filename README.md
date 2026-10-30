@@ -14,7 +14,9 @@ Developed with assistance from OpenAI Codex.
 |---|---|---|
 | [build-agent-context](skills/build-agent-context/) | Turns archives, documents, messages, links, or a repository into task-focused agent context with source traceability, reading routes, current state, and handoff checks | User's language; Markdown; source-reading tools depend on input formats |
 | [transcribe-recording](skills/transcribe-recording/) | Transcribes meetings, talks, interviews and classes; checks speakers and prepares timestamped material for context | Windows, Linux and macOS; faster-whisper on CPU/CUDA, optional MLX on Apple Silicon |
-| [gost-7-32-2017-latex](skills/gost-7-32-2017-latex/) | Creates and reviews research reports in LaTeX using GOST 7.32-2017: title pages, structure, equations, tables, references, appendices, and PDF checks | Russian; Python 3.10+ and XeLaTeX or LuaLaTeX; optional `pdfplumber` |
+| [gost-7-32-2017-latex](skills/gost-7-32-2017-latex/) | Creates and reviews research reports in LaTeX using GOST 7.32-2017: title pages, structure, equations, tables, references, appendices, and PDF checks | Russian template; Python 3.10+ and XeLaTeX or LuaLaTeX; optional `pdfplumber` |
+
+Skill instructions and agent-facing references are maintained in English. Agents respond in the user's language unless asked otherwise; artifact language follows the task. Exact wording required by standards, templates, or sources is preserved. The GOST template remains Russian, and transcripts retain the recorded language unless translation is requested.
 
 Each skill is a separate folder with a `SKILL.md` entrypoint. Its scripts and resources live alongside it.
 

@@ -1,20 +1,20 @@
-# Локальные маршруты: Windows, Linux, macOS
+# Local Routes: Windows, Linux, macOS
 
-## Выбор движка
+## Choose an engine
 
-| Среда | Движок | Вычисления |
+| Environment | Engine | Computation |
 |---|---|---|
-| Windows, Linux, macOS при наличии совместимых wheels | `faster-whisper` (по умолчанию) | CPU, по умолчанию int8 |
-| Windows / Linux с совместимой NVIDIA и библиотеками CUDA | `faster-whisper --device cuda` | По умолчанию float16; тип можно задать явно |
-| macOS на Apple Silicon | `mlx` | Metal; отдельный формат весов MLX |
+| Windows, Linux, macOS with compatible wheels | `faster-whisper` (default) | CPU, int8 by default |
+| Windows / Linux with compatible NVIDIA hardware and CUDA libraries | `faster-whisper --device cuda` | float16 by default; type can be set explicitly |
+| macOS on Apple Silicon | `mlx` | Metal; separate MLX weight format |
 
-Проверь архитектуру, Python, RAM и доступность пакетов. Наличие NVIDIA не гарантирует рабочий CUDA-маршрут: версии драйвера, CTranslate2, cuBLAS и cuDNN должны быть совместимы. Проверяй [текущие требования faster-whisper](https://github.com/SYSTRAN/faster-whisper#requirements), не устанавливай драйверы автоматически ради пробы. При неподдерживаемом GPU выбирай CPU или сообщи блокер. Не переноси MLX на Windows/Linux; Intel Mac использует CPU-маршрут. Наличие пакета не подтверждает доступ GPU из среды агента.
+Check architecture, Python, RAM, and package availability. NVIDIA hardware does not guarantee a working CUDA route: driver, CTranslate2, cuBLAS, and cuDNN versions must be compatible. Check [current faster-whisper requirements](https://github.com/SYSTRAN/faster-whisper#requirements); do not automatically install drivers for a sample. For unsupported GPUs, choose CPU or report the blocker. Do not use MLX on Windows/Linux; Intel Macs use the CPU route. An installed package does not prove GPU access from the agent environment.
 
-## Окружение
+## Environment
 
-Изолируй зависимости, системный Python не меняй. Запуск через полный путь к Python окружения не требует его активации.
+Isolate dependencies; do not modify system Python. Running the environment's Python by full path does not require activation.
 
-Windows, PowerShell (в папке скилла):
+Windows, PowerShell (inside the skill folder):
 
 ```powershell
 py -m venv .venv-asr
@@ -32,42 +32,42 @@ python3 -m venv .venv-asr
 .venv-asr/bin/python scripts/export_transcript.py probe --output probe-export
 ```
 
-Для NVIDIA добавь к команде распознавания `--device cuda`; при необходимости укажи поддерживаемый `--compute-type`. Ошибка CUDA не переключает запись в облако.
+For NVIDIA, add `--device cuda` to recognition; specify a supported `--compute-type` if needed. CUDA failure does not switch the recording to cloud processing.
 
-Apple Silicon, дополнительный маршрут:
+Additional Apple Silicon route:
 
 ```sh
 .venv-asr/bin/python -m pip install mlx-whisper imageio-ffmpeg
 .venv-asr/bin/python scripts/transcribe_local.py recording.m4a probe-mlx --backend mlx --model MLX_MODEL_PATH --duration 90
 ```
 
-Модели для движков **не взаимозаменяемы**. `MODEL_PATH` — папка конвертированной CTranslate2-модели (с `model.bin`) или её явный Hugging Face repo ID; `MLX_MODEL_PATH` — папка/ID модели в формате MLX Whisper. При ID скрипт загружает snapshot. Короткие имена вроде `small` помощник не раскрывает в repo ID: используй точный идентификатор из документации выбранной модели. Не скачивай большую модель, пока не проверены зависимости и ресурсы.
+Engine models are **not interchangeable**. `MODEL_PATH` is a converted CTranslate2 model folder (containing `model.bin`) or its explicit Hugging Face repo ID; `MLX_MODEL_PATH` is a folder/ID in MLX Whisper format. For IDs, the script downloads a snapshot. The helper does not expand short names such as `small` into repo IDs: use the exact identifier from the selected model's documentation. Do not download a large model before checking dependencies and resources.
 
-Модели загружаются отдельно от программ. Сохраняй их локально для работы без сети. Кеш задаётся `HF_HOME`; запрет сетевых запросов — `HF_HUB_OFFLINE=1`. В PowerShell: `$env:HF_HUB_OFFLINE = '1'`; в shell: `export HF_HUB_OFFLINE=1`. При локальном пути загрузка snapshot не нужна. Не ищи и не печатай секреты ради запуска.
+Models are downloaded separately from software. Store them locally for offline work. Set the cache with `HF_HOME`; prohibit network requests with `HF_HUB_OFFLINE=1`. In PowerShell: `$env:HF_HUB_OFFLINE = '1'`; in shell: `export HF_HUB_OFFLINE=1`. Local paths need no snapshot download. Do not search for or print secrets to enable execution.
 
-## Проба и охват
+## Sample and coverage
 
-Помощник `scripts/transcribe_local.py` не устанавливает зависимости и не отправляет запись сервису. Он декодирует выбранный интервал FFmpeg из imageio-ffmpeg в mono float32 / 16 kHz и вызывает выбранный движок. Использование внешнего FFmpeg в этом помощнике нужно для одинакового поведения нарезки и журналов у обоих движков; сама библиотека faster-whisper умеет декодировать через PyAV.
+The `scripts/transcribe_local.py` helper neither installs dependencies nor sends recordings to a service. It decodes the selected interval with FFmpeg from imageio-ffmpeg into mono float32 / 16 kHz and calls the chosen engine. External FFmpeg provides consistent chunking and logging across both engines; faster-whisper itself can decode through PyAV.
 
-Длительность по умолчанию 90 секунд — **проба**, не полный охват. `--duration 0` обрабатывает до конца, `--start` — смещение в секундах. Команда для полной записи использует тот же Python окружения:
+The default duration of 90 seconds is a **sample**, not full coverage. `--duration 0` processes to the end; `--start` is the offset in seconds. Use the same environment Python for the full recording:
 
 ```sh
 python scripts/transcribe_local.py recording.m4a full-run --backend faster-whisper --model MODEL_PATH --duration 0
 python scripts/export_transcript.py full-run --output transcript-package
 ```
 
-`--language auto` по умолчанию определяет язык; для известного языка укажи код, например `--language ru`. Для короткой пробы автоматическое определение может ошибаться. Нужна транскрипция исходного языка, не скрытый перевод. Моно-сведение не проверяет качество каналов: сначала проверь исходные каналы.
+The default `--language auto` detects language; for a known language, specify its code, for example `--language ru`. Detection may fail on short samples. Transcribe the original language without hidden translation. Mono mixing does not verify channel quality: inspect original channels first.
 
-Скрипт декодирует весь выбранный интервал в память. Оцени RAM, диск и скорость на пробе; большие интервалы обрабатывай частями. Папка выхода должна быть новой. В манифесте сохраняются хеш исходника, хеши конфигурации/весов, версии библиотек и параметры движка. Python-предупреждения инференса сохраняются в `inference.log` и отмечаются в манифесте; при численных предупреждениях проверь результат и совместимость библиотек до длинного прогона. JSON движка сохраняется до экспорта; faster-whisper выдаёт генератор сегментов — скрипт полностью читает его и сериализует поля dataclass, включая временные метки слов. VAD в этом маршруте отключён; временная ось не сжимается.
+The script decodes the entire selected interval into memory. Estimate RAM, disk, and speed on a sample; process large intervals in chunks. The output folder must be new. The manifest stores the source hash, configuration/weight hashes, library versions, and engine parameters. Python inference warnings are saved in `inference.log` and noted in the manifest; for numerical warnings, check results and library compatibility before a long run. Engine JSON is saved before export; faster-whisper returns a segment generator, which the script fully consumes and serializes from dataclass fields, including word timestamps. VAD is disabled in this route; the timeline is not compressed.
 
-## Длинные записи и возобновление
+## Long recordings and resumption
 
-Можно запускать неперекрывающиеся части с разными `--start` / `--duration` в отдельные папки. Экспортёр принимает папки в любом порядке, проверяет совместимость исходника, модели, языка, библиотек и параметров движка, показывает пропуски и отклоняет перекрытия больше 1 мс. Граничные слова могут быть разрезаны: сверяй их по исходнику. Если нужны перекрытия, разреши дубли отдельно; экспортёр не угадывает соответствие текста.
+Run nonoverlapping chunks with different `--start` / `--duration` values into separate folders. The exporter accepts folders in any order, checks source, model, language, library, and engine-parameter compatibility, reports gaps, and rejects overlaps over 1 ms. Boundary words can be cut: check against the source. If overlaps are needed, resolve duplicates separately; the exporter does not infer text alignment.
 
-Незавершённый ASR посреди части автоматически не возобновляется. Завершённые папки можно повторно экспортировать. При ошибке изучи журнал и выбери новую папку для повторного запуска; не удаляй результаты вслепую. Папка без `manifest.json` не считается завершённой.
+Incomplete ASR within a chunk does not automatically resume. Completed folders can be re-exported. On failure, inspect the log and choose a new folder for retry; do not blindly delete results. A folder without `manifest.json` is not considered complete.
 
-Сохраняй предупреждения декодера. Совпадение длительности не доказывает отсутствие внутреннего дефекта. Экспортёр не заявляет, что достигнут конец исходника: это проверяется отдельно по длительности и окончанию записи.
+Retain decoder warnings. Matching duration does not establish absence of internal defects. The exporter does not claim the source's end was reached: verify that separately against duration and the recording's ending.
 
-## Выход
+## Output
 
-Экспорт создаёт `transcript.md`, `transcript.json`, `manifest.json`, `review.md`, `context-input.md` и копии первичных ASR с манифестами. Пустые сегменты остаются в первичном JSON; весь непустой текст переносится без смысловой правки. Сомнительные интервалы сохраняются с пометкой. Отсутствие пометки не означает правильность текста. Экспортёр не требует MLX или faster-whisper: для обработки сохранённых JSON достаточно стандартной библиотеки Python.
+Export creates `transcript.md`, `transcript.json`, `manifest.json`, `review.md`, `context-input.md`, and copies of raw ASR with manifests. Empty segments remain in raw JSON; all nonempty text transfers without semantic editing. Doubtful intervals are retained with flags. Absence of a flag does not mean correct text. The exporter requires neither MLX nor faster-whisper: Python's standard library suffices for saved JSON.

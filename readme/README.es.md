@@ -12,7 +12,9 @@ Herramientas prácticas para agentes de IA: instrucciones, scripts, plantillas y
 |---|---|---|
 | [build-agent-context](../skills/build-agent-context/) | Convierte archivos, documentos, mensajes, enlaces y repositorios en contexto para una tarea, con fuentes, rutas de lectura, estado y comprobaciones de entrega | Idioma del usuario; Markdown; herramientas de lectura según el formato |
 | [transcribe-recording](../skills/transcribe-recording/) | Transcribe reuniones, ponencias, entrevistas y clases; comprueba los hablantes y prepara material con marcas de tiempo para contexto | Windows, Linux y macOS; faster-whisper en CPU/CUDA, MLX opcional en Apple Silicon |
-| [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Prepara y revisa informes de investigación en LaTeX según GOST 7.32-2017: portada, estructura, fórmulas, tablas, bibliografía, anexos y PDF | Ruso; Python 3.10+ y XeLaTeX o LuaLaTeX; `pdfplumber` opcional |
+| [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Prepara y revisa informes de investigación en LaTeX según GOST 7.32-2017: portada, estructura, fórmulas, tablas, bibliografía, anexos y PDF | Plantilla en ruso; Python 3.10+ y XeLaTeX o LuaLaTeX; `pdfplumber` opcional |
+
+Las instrucciones de las habilidades y las referencias para el agente se mantienen en inglés. El agente responde en el idioma del usuario salvo petición contraria; el idioma de los archivos generados depende de la tarea. Se conserva la redacción exacta exigida por normas, plantillas o fuentes. La plantilla GOST sigue en ruso y las transcripciones conservan el idioma de la grabación salvo que se solicite traducción.
 
 Cada habilidad tiene su propia carpeta con un punto de entrada `SKILL.md`, scripts y recursos.
 

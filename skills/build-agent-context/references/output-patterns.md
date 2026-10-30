@@ -1,110 +1,110 @@
-# Схемы результата
+# Output Patterns
 
-Имена файлов и разделов ниже — варианты организации, а не обязательный стандарт. Не создавай пустые файлы. Для небольшого запроса объедини сведения в один документ. Заполняй схемы фактами из текущей задачи; примеры здесь вымышленные.
+The file and section names below are organizational options, not a mandatory standard. Do not create empty files. For a small request, combine information in one document. Populate patterns with facts from the current task; examples here are fictional.
 
-## Один самодостаточный документ
+## One self-contained document
 
 ```text
-Назначение и результат
-  Какую работу делать; что пользователь примет за готовый результат.
-Границы и критичные условия
-  Область задачи, ограничения и действующие требования с происхождением.
-Необходимые сведения
-  Определения, данные, точные значения и локаторы источников.
-Состояние
-  Что известно, сделано и проверено; что пока заявлено без проверки.
-Открытые вопросы
-  Противоречия, недоступные сведения и влияние каждого пробела.
-Продолжение
-  Первое обоснованное действие и критерий его проверки.
-Источники и охват
-  Что реально прочитано; что исключено или недоступно.
+Purpose and outcome
+  Work to perform; what the user will accept as finished.
+Scope and critical conditions
+  Task boundaries, constraints, and active requirements with provenance.
+Necessary information
+  Definitions, data, exact values, and source locators.
+State
+  What is known, done, and verified; what is only claimed.
+Open questions
+  Conflicts, unavailable information, and the effect of each gap.
+Continuation
+  First justified action and the criterion for checking it.
+Sources and coverage
+  What was actually read; what was excluded or inaccessible.
 ```
 
-В режиме чата помести нужные для следующего действия данные внутрь документа. Если всё не помещается в заданный бюджет, обозначь потери и потребность передать дополнительные материалы. Не называй урезанный вариант полным.
+For chat, include the data needed for the next action inside the document. If it does not fit the requested budget, state omissions and the need to supply further materials. Do not call an abridged version complete.
 
-## Набор файлов с загрузкой по необходимости
+## Files loaded as needed
 
 ```text
 context/
-  CONTEXT.md          Цель, ограничения, краткое состояние, маршруты чтения
-  sources.md          Источники, версии, локаторы, охват и пробелы
+  CONTEXT.md          Goal, constraints, brief state, reading routes
+  sources.md          Sources, versions, locators, coverage, and gaps
   knowledge/
-    requirements.md   Условия задачи и конфликты требований
-    domain.md         Только нужные понятия, данные и зависимости
-  state.md            Текущая работа, проверки, проблемы, следующий шаг
+    requirements.md   Task conditions and requirement conflicts
+    domain.md         Only necessary concepts, data, and dependencies
+  state.md            Current work, checks, issues, next step
 ```
 
-Добавляй тематические файлы по реальным границам задач. Для нового агента точка входа должна оставаться понятной без чтения всех файлов. Укажи базовую папку для относительных ссылок. Переносимый пакет не должен зависеть от временной директории создателя. Исходники либо входят в разрешённую передачу, либо доступны по указанному способу; проверь это со стороны получателя.
+Add topic files along actual task boundaries. The entrypoint must remain understandable to a new agent without reading all files. Specify the base folder for relative links. A portable package must not depend on its creator's temporary directory. Originals must either be included in the authorized handoff or accessible through the stated method; check from the recipient's perspective.
 
-Пример маршрутов в `CONTEXT.md`:
+Example routes in `CONTEXT.md`:
 
-| Когда читать | Куда перейти | Для чего |
+| When to read | Destination | Purpose |
 |---|---|---|
-| Перед изменением расчёта | `knowledge/requirements.md`, «Округление» | Найти правило и исключение |
-| При вопросе о версии требования | `sources.md`, S02 и S05 | Сопоставить даты и авторов |
-| При продолжении работы | `state.md` | Найти последний проверенный результат |
+| Before changing the calculation | `knowledge/requirements.md`, “Rounding” | Find the rule and exception |
+| When questioning a requirement version | `sources.md`, S02 and S05 | Compare dates and authors |
+| When resuming work | `state.md` | Find the latest verified result |
 
-## Карточка источника
-
-```text
-S02 — Условия расчёта, редакция 2
-Местонахождение: materials/conditions.md
-Автор и роль: владелец задачи; указано в документе
-Версия/дата документа: 2026-09-18
-Дата чтения: 2026-10-28
-Охват: прочитаны разделы 1–4; приложение с примерами не прочитано
-Содержимое: формула комиссии, округление, исключения
-Локаторы: §2 «Комиссия», §4 «Исключения»
-Ограничение: документ описывает требования, реализация не проверялась
-```
-
-Дата чтения не означает дату последней проверки истинности всех сведений. В карточках реального пакета указывай только известные метаданные.
-
-## Факт и конфликт
+## Source record
 
 ```text
-Требование R03: ставка 2,5% действует для новых договоров с 1 октября.
-Основание: S02, §2, абзац 3.
-Исключение: старые договоры используют прежнюю ставку — S02, §4.
-Реализация: не проверена.
-
-Конфликт C01: пример S01 использует 2%, S02 требует 2,5%.
-Решение: для новых договоров следовать S02, поскольку это утверждённая
-редакция условий; S01 оставлен примером для прежнего периода.
-Открыто: миграция старых договоров источниками не определена.
-Следствие: не предлагать такую миграцию без уточнения.
+S02 — Calculation conditions, revision 2
+Location: materials/conditions.md
+Author and role: task owner; stated in the document
+Document version/date: 2026-09-18
+Reading date: 2026-10-28
+Coverage: sections 1–4 read; examples appendix not read
+Contents: fee formula, rounding, exceptions
+Locators: §2 “Fee”, §4 “Exceptions”
+Limitation: the document describes requirements; implementation was not checked
 ```
 
-Слово «утверждённая» в реальной карточке требует доказательства полномочий и утверждения. Если его нет, запиши конфликт без самостоятельного выбора.
+The reading date is not the latest date on which all information was verified as true. Include only known metadata in actual records.
 
-## Передача состояния
-
-Запиши дату и применимую версию/ревизию. Отдели устойчивые сведения в тематических справках от быстро меняющегося состояния:
+## Fact and conflict
 
 ```text
-Цель: исправить расчёт комиссии для новых договоров.
-Сделано: найден расчёт в billing.py, функция calculate_fee.
-Результат: изменение подготовлено, проверки ещё не запущены.
-Проверено: чтением кода подтверждено использование старой ставки.
-Не проверено: тесты, CI, поведение в рабочей среде.
-Следующий шаг: проверить выбранное правило по R03, затем запустить
-разрешённые проектом тесты после изменения реализации.
-Ограничение: миграция старых договоров не входит в согласованный объём.
+Requirement R03: the 2.5% rate applies to new contracts from October 1.
+Basis: S02, §2, paragraph 3.
+Exception: existing contracts keep the previous rate — S02, §4.
+Implementation: not checked.
+
+Conflict C01: example S01 uses 2%; S02 requires 2.5%.
+Decision: follow S02 for new contracts because it is the approved revision
+of the conditions; retain S01 as an example for the previous period.
+Open: the sources do not specify migration of existing contracts.
+Consequence: do not propose that migration without clarification.
 ```
 
-Для важной неудачной попытки сохраняй действие, условия, наблюдаемую ошибку и вывод о следующей проверке. Не включай всю историю инструментов. При изменении цели пересмотри следующий шаг и пометь потерявшие силу планы.
+In a real record, “approved” requires evidence of authority and approval. Without it, record the conflict without choosing a version yourself.
 
-## Стартовый запрос
+## State handoff
 
-Для файлового агента:
+Record the date and applicable version/revision. Separate stable information in topic notes from rapidly changing state:
 
 ```text
-Прочитай context/CONTEXT.md как точку входа по задаче.
-Открой связанные материалы, необходимые для моего текущего запроса.
-Перед действиями перепроверь изменяемое состояние и существенные
-неизвестные; сохраняй ограничения и различай выполненное и проверенное.
-Моя задача: [конкретный следующий запрос пользователя].
+Goal: fix fee calculation for new contracts.
+Done: located the calculation in billing.py, function calculate_fee.
+Result: change prepared; checks not yet run.
+Verified: code inspection confirmed use of the old rate.
+Not checked: tests, CI, production behavior.
+Next step: verify the selected rule against R03, then run project-authorized
+tests after changing the implementation.
+Constraint: migration of existing contracts is outside the agreed scope.
 ```
 
-Для чата передай самодостаточный текст и нужные вложения. Не обещай, что модель загрузит материалы из скрытой папки. При настройке файла инструкций достаточно короткой ссылки с областью применения; полный корпус знаний туда не копируй.
+For significant failed attempts, retain the action, conditions, observed error, and conclusion about the next check. Do not include the entire tool history. When the goal changes, revisit the next step and mark obsolete plans.
+
+## Starting prompt
+
+For a file-capable agent:
+
+```text
+Read context/CONTEXT.md as the task entrypoint.
+Open linked materials needed for my current request.
+Before acting, recheck changing state and significant unknowns; preserve
+constraints and distinguish completed work from verified work.
+My task: [the user's specific next request].
+```
+
+For chat, supply self-contained text and necessary attachments. Do not promise that a model will load materials from a hidden folder. When configuring an instruction file, a short scoped link suffices; do not copy the full knowledge collection into it.

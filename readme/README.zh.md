@@ -12,7 +12,9 @@
 |---|---|---|
 | [build-agent-context](../skills/build-agent-context/) | 将压缩包、文档、消息、链接或代码仓库整理为任务上下文，包含来源追溯、阅读路径、当前状态和交接检查 | 用户的语言；Markdown；阅读工具取决于输入格式 |
 | [transcribe-recording](../skills/transcribe-recording/) | 转写会议、演讲、访谈和课程录音，检查说话人区分，并生成带时间戳的上下文材料 | Windows、Linux 和 macOS；CPU/CUDA 使用 faster-whisper，Apple Silicon 可选 MLX |
-| [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | 按 GOST 7.32-2017 编写和审查 LaTeX 科研报告，包括封面、结构、公式、表格、参考文献、附录及 PDF 检查 | 俄语；Python 3.10+；XeLaTeX 或 LuaLaTeX；可选 `pdfplumber` |
+| [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | 按 GOST 7.32-2017 编写和审查 LaTeX 科研报告，包括封面、结构、公式、表格、参考文献、附录及 PDF 检查 | 俄语模板；Python 3.10+；XeLaTeX 或 LuaLaTeX；可选 `pdfplumber` |
+
+技能指令和面向代理的参考资料以英语维护。除非另有要求，代理使用用户的语言回复；生成文件的语言由任务要求决定。标准、模板或来源要求的确切措辞予以保留。GOST 模板仍为俄语；除非要求翻译，转录保留录音的原始语言。
 
 每项技能都有独立文件夹，以 `SKILL.md` 为入口，脚本和资源放在同一目录下。
 

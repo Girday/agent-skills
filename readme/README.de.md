@@ -12,7 +12,9 @@ Praktische Fähigkeiten für KI-Agenten: Anleitungen, Skripte, Vorlagen und Prü
 |---|---|---|
 | [build-agent-context](../skills/build-agent-context/) | Erstellt aus Archiven, Dokumenten, Nachrichten, Links und Repositories aufgabenbezogenen Kontext mit nachvollziehbaren Quellen, Lesepfaden, Arbeitsstand und Übergabeprüfungen | Sprache des Nutzers; Markdown; Lesewerkzeuge abhängig vom Eingabeformat |
 | [transcribe-recording](../skills/transcribe-recording/) | Transkribiert Besprechungen, Vorträge, Interviews und Unterricht; prüft die Sprechertrennung und erstellt Quellen mit Zeitmarken für den Kontext | Windows, Linux und macOS; faster-whisper auf CPU/CUDA, optional MLX auf Apple Silicon |
-| [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Erstellt und prüft Forschungsberichte in LaTeX nach GOST 7.32-2017: Titelseite, Aufbau, Gleichungen, Tabellen, Quellen, Anhänge und PDF-Prüfungen | Russisch; Python 3.10+ und XeLaTeX oder LuaLaTeX; optional `pdfplumber` |
+| [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Erstellt und prüft Forschungsberichte in LaTeX nach GOST 7.32-2017: Titelseite, Aufbau, Gleichungen, Tabellen, Quellen, Anhänge und PDF-Prüfungen | Russische Vorlage; Python 3.10+ und XeLaTeX oder LuaLaTeX; optional `pdfplumber` |
+
+Die Anweisungen der Fähigkeiten und die Referenzen für den Agenten werden auf Englisch gepflegt. Der Agent antwortet in der Sprache des Nutzers, sofern nichts anderes verlangt wird; die Sprache erzeugter Dateien richtet sich nach der Aufgabe. Vorgeschriebener Wortlaut aus Normen, Vorlagen oder Quellen bleibt erhalten. Die GOST-Vorlage bleibt russisch; Transkripte behalten die Sprache der Aufnahme, sofern keine Übersetzung angefordert wird.
 
 Jede Fähigkeit liegt in einem eigenen Ordner mit `SKILL.md` als Einstieg sowie zugehörigen Skripten und Ressourcen.
 

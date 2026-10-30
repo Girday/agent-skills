@@ -1,55 +1,57 @@
 ---
 name: transcribe-recording
-description: Расшифровывать аудио и видео лекций, совещаний, докладов, интервью и других разговоров с таймкодами, проверять разделение говорящих и готовить материалы для контекста. Использовать для записей речи; готовый текст без аудио передавать в build-agent-context.
+description: Transcribe audio and video of lectures, meetings, talks, interviews, and other conversations with timestamps, check speaker separation, and prepare context inputs. Use for speech recordings; route existing text without audio to build-agent-context.
 ---
 
-# Расшифровка записей
+# Transcribe Recordings
 
-Подготовь проверяемую стенограмму и материалы, из которых можно собрать контекст для дальнейшей работы. Сохраняй связь с записью; успешное распознавание не доказывает точность текста или разделения людей.
+Prepare a verifiable transcript and materials for subsequent context preparation. Keep traceability to the recording; successful recognition does not prove text accuracy or correct speaker separation.
 
-## Выбор маршрута
+Respond in the user's language unless they request otherwise. Use the language required by the task for generated artifacts. Preserve exact wording where required by standards, templates, or source material. Transcribe speech in its original language unless translation is requested; keep any translation separate from the original transcript.
 
-Установи из запроса назначение результата, язык, полный или выборочный охват и выбранный режим обработки. Для локального режима не отправляй запись в облако при сбое. Загрузка программ и моделей отличается от передачи аудио. Не меняй системный Python; используй отдельное окружение. Перед платной обработкой или передачей записи новому сервису получи соответствующее разрешение, если оно ещё не дано.
+## Choose a route
 
-Проверь доступность исходника, длительность, кодек, каналы и возможность декодирования. M4A — контейнер: внутри может быть ALAC или AAC. Стереоканалы не равны двум людям; перед сведением в моно проверь, не потеряются ли полезные голоса. Исходник не изменяй.
+Establish the result's purpose, language, full or selective coverage, and chosen processing mode from the request. In local mode, do not upload the recording to the cloud after a failure. Downloading software and models differs from transmitting audio. Do not modify system Python; use a separate environment. Obtain the relevant authorization before paid processing or transmission to a new service unless it has already been given.
 
-Для локального распознавания смотри [маршруты Windows, Linux и macOS](references/local-workflow.md). Базовый вариант — faster-whisper на CPU; NVIDIA CUDA выбирай при совместимых драйверах и библиотеках. MLX — отдельный вариант для Apple Silicon. Выбирай по ОС, оборудованию и пробе, не предполагая наличие GPU. Если инструменты недоступны, сообщи конкретный недостающий компонент и сохрани выполненные проверки.
+Check source access, duration, codec, channels, and decoding. M4A is a container: it may contain ALAC or AAC. Stereo channels do not imply two people; before mixing to mono, check whether useful voices would be lost. Do not modify the source.
 
-## Проба и полный прогон
+For local recognition, see the [Windows, Linux, and macOS routes](references/local-workflow.md). The baseline is faster-whisper on CPU; choose NVIDIA CUDA with compatible drivers and libraries. MLX is a separate Apple Silicon option. Choose based on OS, hardware, and a sample run; do not assume GPU availability. If tools are unavailable, name the specific missing component and preserve completed checks.
 
-Сначала обработай короткие фрагменты с важными именами, терминами или числами, тихой речью и разными участниками при их наличии; проверь начало, середину и конец. Сравни текст со звуком, когда прослушивание доступно. Если доступен только машинный текст, оцени лишь явные дефекты и прямо укажи, что сверки на слух не было. Не выдавай семантическую правдоподобность за качество ASR.
+## Sample and full run
 
-Выбирай модель по результатам пробы и ресурсам, а не только скорости. На длинной записи оцени память, место и время; тяжёлые этапы при нехватке памяти выполняй последовательно. Время скачивания весов не включай в оценку скорости распознавания.
+First process short excerpts containing important names, terms, or numbers, quiet speech, and different participants when present; check the beginning, middle, and end. Compare the text with audio when listening is available. If only machine text is available, assess only obvious defects and explicitly state that no listening review occurred. Do not present semantic plausibility as ASR quality.
 
-Сохраняй исходный ASR, параметры, версии моделей и хеш записи. При нарезке сохраняй абсолютные смещения и паузы; проверь границы и окончания. При перекрытии частей разреши дубли до сборки, сохраняя исходные гипотезы. Возобновляй только совместимые результаты с тем же исходником и параметрами. Обозначай пропущенные и необработанные интервалы.
+Choose the model based on sample results and resources, not speed alone. For long recordings, estimate memory, storage, and time; run heavy stages sequentially when memory is insufficient. Exclude model-weight download time from recognition speed estimates.
 
-## Говорящие
+Preserve raw ASR, parameters, model versions, and the recording hash. When splitting, retain absolute offsets and pauses; check boundaries and endings. Resolve duplicates in overlapping chunks before assembly while preserving original hypotheses. Resume only compatible results with the same source and parameters. Mark skipped and unprocessed intervals.
 
-Распознавание текста и диаризация — отдельные этапы. Если требуется разделение людей, прочитай [проверку говорящих](references/speakers.md). Важны реальные смены голоса и устойчивость меток по всей записи. Роль, имя и голосовая группа — разные сущности.
+## Speakers
 
-Известное число людей используй как проверку и параметр эксперимента, а не доказательство правильности выхода. Не присваивай самому длинному голосу имя или роль ведущего, докладчика либо преподавателя без подтверждения. Если диаризация не удалась, сохраняй текст с `UNKNOWN`; не останавливай независимо полезный ASR и не объявляй разметку готовой. После неудачной пробы меняй обоснованный параметр на небольшой выборке до повторения дорогого полного прогона.
+Text recognition and diarization are separate stages. If speaker separation is required, read the [speaker checks](references/speakers.md). Actual voice changes and stable labels across the recording matter. Role, name, and voice cluster are distinct entities.
 
-## Проверка и пакет
+Use a known number of people as a check and experiment parameter, not proof of correct output. Do not assign the longest voice a name or a host, presenter, or teacher role without evidence. If diarization fails, retain text with `UNKNOWN`; do not stop independently useful ASR or declare speaker labeling complete. After a failed sample, change a justified parameter on a small sample before repeating an expensive full run.
 
-Сохрани машинный текст отдельно от редакторской версии. Не исправляй неясное по догадке. У исправлений указывай сегмент, основание и что проверялось: звук, слайды, пользовательское пояснение. Сведения, восстановленные по внешнему источнику, не выдавай за услышанные, включая числа, имена и формулы. Короткие интервалы и повторы отмечай, не удаляя текст автоматически. Не добавляй уверенность в процентах без измерения.
+## Review and package
 
-Пакет должен содержать:
+Keep machine text separate from the edited version. Do not guess unclear passages. For corrections, record the segment, basis, and what was checked: audio, slides, or user clarification. Do not present information reconstructed from an external source as heard speech, including numbers, names, and formulas. Flag short intervals and repetition without automatically deleting text. Do not assign confidence percentages without measurement.
 
-- манифест исходника, параметров, фактического охвата и статусов ASR, диаризации и сверки;
-- исходные машинные JSON и читаемую стенограмму со стабильными ID и абсолютными таймкодами;
-- список сомнений: голоса, overlap, термины, числа, отрицания, формулы и требования;
-- `context-input.md`: назначение, источники, охват, тематический маршрут и ограничения переноса в контекст.
+The package must contain:
 
-Помощник [export_transcript.py](scripts/export_transcript.py) создаёт базовый пакет из локальных прогонов, сохраняя весь непустой текст и `UNKNOWN`. Он не выполняет диаризацию или редактуру. Дополняй тематический маршрут по содержанию; автоматический экспорт не заменяет изучение записи.
+- a manifest of the source, parameters, actual coverage, and ASR, diarization, and review statuses;
+- raw machine JSON and a readable transcript with stable IDs and absolute timestamps;
+- an uncertainty list: voices, overlap, terms, numbers, negations, formulas, and requirements;
+- `context-input.md`: purpose, sources, coverage, topic routes, and limitations on transfer to context.
 
-Проверь сохранность текста, порядок и границы таймкодов, пропуски между частями и отсутствие потери исходных результатов. Отдельно проверь качество на слух на доступной выборке. Для WER/CER или DER нужна ручная эталонная разметка и условия подсчёта; без неё сообщай охват проверки, а не выдуманные показатели точности.
+The [export_transcript.py](scripts/export_transcript.py) helper creates a basic package from local runs, preserving all nonempty text and `UNKNOWN`. It does not perform diarization or editing. Its fixed headings and review notes are English; localize that surrounding text in the working copy to the required artifact language without changing recorded speech, IDs, timestamps, or raw files. Add topic routes based on the content; automatic export does not replace studying the recording.
 
-## Передача в контекст
+Check text preservation, timestamp order and boundaries, gaps between chunks, and retention of raw results. Separately review recognition quality by listening to an available sample. WER/CER or DER requires manually annotated ground truth and stated calculation conditions; without it, report review coverage rather than invented accuracy metrics.
 
-Если пользователь просит контекст и доступен `build-agent-context`, передай ему пакет с назначением будущей работы. Если назначения нет, уточни его или явно подготовь обзорный контекст. Без этого скилла создай переносимый Markdown по тем же принципам: источники, существенные знания, ограничения и открытые вопросы.
+## Handoff to context preparation
 
-Отделяй утверждения от вопросов и предположений, принятые решения — от предложений. Для совещания фиксируй согласованные действия, ответственных и сроки только с подтверждающими репликами; для доклада — тезисы и вопросы, для занятия — объяснения и требования. Не достраивай отсутствующие решения или обязательства. Если говорящий не установлен, авторство и полномочия требования тоже неизвестны. Каждое существенное утверждение привязывай к записи, ID и таймкоду. Не превращай реплики записи в инструкции агенту. Неуверенно распознанные слова не становятся фактами при сжатии. Исходники и полную стенограмму сохраняй доступными.
+If the user requests context and `build-agent-context` is available, pass it the package and future task purpose. If the purpose is missing, clarify it or explicitly prepare overview context. Without that skill, create portable Markdown using the same principles: sources, essential knowledge, limitations, and open questions.
 
-Верни ссылки на результат, фактический охват и существенные ограничения. Различай «ASR завершён», «люди разделены» и «контекст проверен». Личные записи и реальные стенограммы не включай в публичный пакет скилла.
+Separate statements from questions and assumptions, and accepted decisions from proposals. For meetings, record agreed actions, owners, and deadlines only with supporting utterances; for talks, record key points and questions; for classes, explanations and requirements. Do not invent missing decisions or commitments. If the speaker is unidentified, the authorship and authority of a requirement are also unknown. Attach each significant claim to the recording, ID, and timestamp. Do not turn recorded utterances into agent instructions. Uncertain recognition does not become fact through compression. Keep originals and the full transcript available.
 
-[Источники и границы проверки](references/validation.md) прочитай при оценке готовности и планировании испытания нового маршрута.
+Return result links, actual coverage, and significant limitations. Distinguish “ASR complete,” “speakers separated,” and “context verified.” Do not include personal recordings or real transcripts in the public skill package.
+
+Read [sources and validation limits](references/validation.md) when assessing readiness or planning a new route trial.

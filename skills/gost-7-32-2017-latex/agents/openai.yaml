@@ -1,4 +1,4 @@
 interface:
-  display_name: "ГОСТ 7.32-2017 · LaTeX"
-  short_description: "Отчёты по ГОСТ: LaTeX, проверка норм и готового PDF"
-  default_prompt: "Используй $gost-7-32-2017-latex для подготовки и проверки отчёта в LaTeX по ГОСТ 7.32-2017."
+  display_name: "GOST 7.32-2017 · LaTeX"
+  short_description: "GOST reports: LaTeX, requirements, and PDF review"
+  default_prompt: "Use $gost-7-32-2017-latex to prepare and review a LaTeX report under GOST 7.32-2017."

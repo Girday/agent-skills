@@ -1,42 +1,42 @@
-# Источники и проверка
+# Sources and Validation
 
-## Основания выбора
+## Basis for route selection
 
-Первичные источники (проверялись при подготовке маршрута; совместимость и условия доступа перепроверяй при настройке среды):
+Primary sources (reviewed when preparing the route; recheck compatibility and access conditions during environment setup):
 
-- [Faster-whisper](https://github.com/SYSTRAN/faster-whisper): переносимый CPU-маршрут, NVIDIA CUDA, генератор сегментов и метки слов. Нативные Windows/Linux прогоны в этой среде не выполнялись.
-- [MLX Whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper): локальное распознавание на Apple Silicon, выбор модели и API.
-- [Whisper model card](https://github.com/openai/whisper/blob/main/model-card.md): ограничения, выдуманные и повторяющиеся фразы. Эти эффекты требуют проверки реального звука.
-- [Sherpa-ONNX speaker diarization](https://k2-fsa.github.io/sherpa/onnx/speaker-diarization/index.html) и [пример API](https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/offline-speaker-diarization.py): отдельные этапы сегментации, голосовых признаков и кластеризации.
-- [WeSpeaker pretrained models](https://github.com/wenet-e2e/wespeaker/blob/master/docs/pretrained.md): альтернативные признаки и условия моделей.
-- [Pyannote community-1](https://huggingface.co/pyannote/speaker-diarization-community-1): локальный вариант с отдельными условиями доступа.
+- [Faster-whisper](https://github.com/SYSTRAN/faster-whisper): portable CPU route, NVIDIA CUDA, segment generator, and word timestamps. Native Windows/Linux runs were not performed in this environment.
+- [MLX Whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper): local Apple Silicon recognition, model selection, and API.
+- [Whisper model card](https://github.com/openai/whisper/blob/main/model-card.md): limitations, invented and repeated phrases. These effects require checking actual audio.
+- [Sherpa-ONNX speaker diarization](https://k2-fsa.github.io/sherpa/onnx/speaker-diarization/index.html) and [API example](https://github.com/k2-fsa/sherpa-onnx/blob/master/python-api-examples/offline-speaker-diarization.py): separate segmentation, voice-feature, and clustering stages.
+- [WeSpeaker pretrained models](https://github.com/wenet-e2e/wespeaker/blob/master/docs/pretrained.md): alternative features and model conditions.
+- [Pyannote community-1](https://huggingface.co/pyannote/speaker-diarization-community-1): local option with separate access conditions.
 
-Код помощников написан для этого скилла. Сторонние реализации, модели и частные записи в пакет не включены. Их лицензии и условия не заменяются лицензией репозитория.
+The helpers were written for this skill. Third-party implementations, models, and private recordings are not bundled. The repository license does not replace their licenses or terms.
 
-## Что проверялось
+## What was checked
 
-Предшествующий практический прогон на русской технической записи около 75 минут подтвердил декодирование ALAC из M4A, локальный ASR MLX Whisper small и large-v3-turbo, запуск Sherpa-ONNX и альтернативное объединение голосов WeSpeaker. Turbo давал более читаемый текст на пробе, но без измерения WER и без полной сверки на слух. Автоматическая диаризация не смогла надёжно разделить известных участников: дробление и чрезмерное объединение сохранялись. Этот прогон проверял подход и API, а не все строки новых помощников. Он не доказывает универсальную пригодность выбранных моделей.
+An earlier practical run on an approximately 75-minute Russian technical recording confirmed ALAC decoding from M4A, local ASR with MLX Whisper small and large-v3-turbo, Sherpa-ONNX execution, and alternative WeSpeaker voice clustering. Turbo produced more readable sample text, without WER measurement or full listening review. Automatic diarization did not reliably separate known participants: fragmentation and excessive merging persisted. This run tested the approach and APIs, not every line of the new helpers. It does not establish universal model suitability.
 
-Новые помощники проверены отдельно: экспорт на синтетических входах, абсолютные смещения, сохранность текста и первичных байтов, пропуски, отказ от перекрытий, неверных времён и перезаписи. Реальный машинный результат использован для проверки нового экспортёра без публикации исходника. Локальный помощник запуска проверен на сохранённой WAV-пробе с MLX Whisper large-v3-turbo, отключённой сетью и уже загруженными весами. Новый экспортёр сохранил все 1078 непустых сегментов ранее полученного полного ASR и побайтово скопировал первичный JSON. Исходный M4A к моменту проверки был недоступен по прежнему пути. Полный повторный ASR новым помощником не выполнялся.
+The new helpers were tested separately: synthetic export inputs, absolute offsets, text and raw-byte preservation, gaps, and rejection of overlaps, invalid timestamps, and overwrites. An actual machine result tested the new exporter without publishing the source. The local runner was tested on a saved WAV sample with MLX Whisper large-v3-turbo, disabled networking, and previously downloaded weights. The new exporter preserved all 1078 nonempty segments of earlier full ASR and copied raw JSON byte for byte. The original M4A was no longer available at its former path. Full ASR was not repeated with the new helper.
 
-Не проверены как готовый универсальный маршрут: надёжное разделение людей в шумной аудитории, метрики WER/CER/DER, облачная обработка, другие ОС и все варианты видео, редактура всей стенограммы по звуку и полный цикл использования подготовленного контекста. Скилл не обещает эти результаты без проверки.
+Not validated as a ready universal route: reliable speaker separation in noisy classrooms, WER/CER/DER metrics, cloud processing, other operating systems and all video variants, audio review of the entire transcript, and end-to-end use of prepared context. The skill does not promise these outcomes without validation.
 
-## Поведенческие сценарии для дальнейших проверок
+## Behavioral scenarios for further validation
 
-1. Пользователь выбирает локальный режим, модель недоступна: не отправлять запись сервису; назвать блокер и выполненные этапы.
-2. Известно шесть участников, модель даёт 114 или одну группу: не объявлять число людей, не подгонять результат; проверить диалоги и сообщить статус отдельно от ASR.
-3. Фраза содержит неясное отрицание или срок выполнения: сохранить сомнение и локатор, не создавать уверенное требование в контексте.
-4. Не прослушан звук: различать проверку структуры и сверку содержания.
-5. Длинная запись разбита на части: сохранить смещения, выявить пропуски и дубли, не смешать локальные speaker ID.
+1. User chooses local mode; model is unavailable: do not transmit the recording to a service; name the blocker and completed stages.
+2. Six participants are known; the model returns 114 clusters or one: do not declare a participant count or force the result; inspect dialogues and report status separately from ASR.
+3. A phrase contains an unclear negation or deadline: preserve uncertainty and a locator; do not create a confident context requirement.
+4. Audio was not heard: distinguish structural checks from content review.
+5. Long recording split into chunks: retain offsets, detect gaps and duplicates, and do not conflate local speaker IDs.
 
-Эти сценарии являются планом поведенческой проверки, а не заявлением, что независимый агент уже прошёл их.
+These scenarios are a behavioral validation plan, not a claim that an independent agent has already passed them.
 
-## Расширение назначения
+## Broader purpose
 
-Скилл применим к совещаниям, докладам, интервью, занятиям и другим речевым записям. Проверка назначения должна менять отбор сведений, а не содержимое исходной стенограммы: предложения не становятся решениями, обсуждение срока не означает обязательство, вопрос не равен утверждению. Наблюдения учебного прогона остаются частным испытанием и не подтверждают качество на всех типах записей.
+The skill applies to meetings, talks, interviews, classes, and other speech recordings. Checking purpose should change information selection, not raw transcript content: proposals do not become decisions, discussing a deadline does not establish a commitment, and questions are not statements. Classroom trial observations remain a specific experiment and do not establish quality for all recording types.
 
-## Проверка переносимого помощника
+## Portable helper validation
 
-На Mac выполнена короткая CPU-проба faster-whisper с CTranslate2 и маленькой моделью tiny: прошли декодирование, вычисление признаков, инференс и сериализация генератора с метками слов. В этом окружении получены RuntimeWarning при вычислении mel-признаков; машинный текст неточен. Это smoke-проверка пути выполнения, не подтверждение качества. Помощник сохраняет Python-предупреждения в inference.log, экспортёр переносит журнал в пакет. На точность tiny для технической речи рассчитывать по этой пробе нельзя.
+A short Mac CPU sample with faster-whisper, CTranslate2, and the tiny model passed decoding, feature computation, inference, and generator serialization with word timestamps. This environment produced RuntimeWarning messages during mel-feature computation; machine text was inaccurate. This is an execution-path smoke check, not quality validation. The helper retains Python warnings in inference.log, and the exporter carries that log into the package. The sample does not justify relying on tiny for technical speech accuracy.
 
-Тесты отдельно проверяют CPU-настройки для Windows/Linux/macOS, отказ MLX на неподдерживаемых хостах и перенос меток слов из генератора. Они моделируют выбор среды и контракт адаптера, **не являются нативными прогонами Windows/Linux или CUDA**. Такие прогоны ещё не выполнены; ранее проверенный MLX-маршрут остаётся отдельным вариантом.
+Tests separately check CPU settings for Windows/Linux/macOS, MLX rejection on unsupported hosts, and transfer of word timestamps from the generator. They model environment selection and the adapter contract; they **are not native Windows/Linux or CUDA runs**. Those runs remain unperformed; the previously tested MLX route remains a separate option.

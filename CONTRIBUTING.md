@@ -2,6 +2,8 @@
 
 Add a skill under `skills/<lowercase-hyphenated-name>/`, then add its catalog entry to `README.md` and the translations under `readme/`. Explain the concrete task it handles and provide a realistic usage example.
 
+Maintain skill instructions, agent-facing references, and UI metadata in English. Skills must direct agents to respond in the user's language unless requested otherwise and use the artifact language required by the task. Preserve mandatory original wording and language-specific template content; transcribe recorded speech in its original language unless translation is requested. Keep README translations localized.
+
 Keep `SKILL.md` focused on decisions and workflow. Place detailed references, reusable scripts, and templates in separate resources when they help. Make required dependencies explicit and provide a usable fallback for optional agent-specific tools.
 
 Include material you are entitled to publish. Cite external sources, preserve their licensing requirements, and distinguish original analysis from authoritative source text. Do not include private infrastructure details, personal document data, credentials, local machine paths, or proprietary reference files.

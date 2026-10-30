@@ -1,269 +1,269 @@
-# Карта требований: все разделы и приложения
+# Requirements Map: All Sections and Appendices
 
-Аналитический пересказ. **Т** — требование при применимости; **Д** — допущение; **Р** — рекомендация; **В** — решение шаблона; **О** — организационное действие. Проверка: **С** содержание/источники, **Л** LaTeX, **П** PDF, **О** подтверждение организации. Строки объединяют связанные нормы, но сохраняют номера подпунктов. Общие параметры не отменяют частных исключений.
+Analytical paraphrase. **REQ** — requirement when applicable; **PERM** — permitted alternative; **REC** — recommendation; **TPL** — template choice; **ORG** — organizational action. Checks: **C** content/sources, **L** LaTeX, **P** PDF, **O** organizational confirmation. Rows group related rules while retaining subclause identifiers. General parameters do not override specific exceptions. Russian wording and alphabet symbols are retained where needed for report output.
 
-## 1–4 Применимость и структура
+## 1–4 Applicability and structure
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 1 | Т: структура/оформление отчётов о научно-исследовательских, проектно-конструкторских, конструкторско-технологических, проектно-технологических работах. Фундаментальные, поисковые, прикладные исследования всех областей, организации любых правовых форм. Д: применение в иных областях научной деятельности | С: определить вид; не объявлять стандартом для любого письма, заявления или ВКР |
-| 2 | При замене/изменении ссылочного стандарта использовать заменяющий/изменённый; при отмене без замены — незатронутую часть. Р: проверять по официальной системе и указателям | С: см. sources.md; не выводить текущий статус из года ссылки |
-| 3.1 | Отчёт систематизирует состояние проблемы, ход исследования и результаты | С: оформление не заменяет исследование |
-| 3.2 | Т: заключительный отчёт о работе в целом. Д: промежуточные по этапам, отражённые в ТЗ/календарном плане, с учётом ГОСТ 15.101 | С/О |
-| 3.3 | О/Т: организация направляет заключительный отчёт в орган НТИ по порядку страны | О: не отправлять автоматически по этому пункту |
-| 3.4 | О: за достоверность и соответствие отвечает организация-исполнитель | О |
-| 3.5 | О/Т: обязательный нормоконтроль в организации; Р: руководствоваться данным стандартом | О: автоматический аудит помогает, но не удостоверяет его прохождение |
-| 3.6 | Т: национальный язык страны либо русский. Д: в общественных науках национальный и русский | С/Л |
-| 4 | Порядок: титул → исполнители → реферат → содержание → термины → сокращения → введение → основная часть → заключение → источники → приложения. Жирным в оригинале отмечены обязательные **титул, исполнители, реферат, содержание, введение, основная часть, заключение**. Остальные выбираются с учётом 5–6 | С/П: исключения 5.2.2, 5.4.3. Список источников не жирный, но использованные документы требуют описания по 5.10, 6.9, 6.16 |
+| 1 | REQ: structure/formatting of reports on research, design and development, design and technological, and project and technological work. Fundamental, exploratory, and applied research in all fields, organizations of any legal form. PERM: use in other scientific activities | C: identify the type; do not declare it a standard for every letter, application, or graduation thesis |
+| 2 | If a referenced standard is replaced/amended, use the replacement/amended version; if withdrawn without replacement, apply the part unaffected by the reference. REC: check official systems and indexes | C: see sources.md; do not infer current status from the reference year |
+| 3.1 | A report systematizes the problem's state, research process, and results | C: formatting does not replace research |
+| 3.2 | REQ: final report for the whole work. PERM: interim reports for stages reflected in the specification/schedule, accounting for GOST 15.101 | C/O |
+| 3.3 | ORG/REQ: the organization submits the final report to the scientific/technical information authority under national procedures | O: do not submit automatically under this clause |
+| 3.4 | ORG: the performing organization is responsible for accuracy and compliance | O |
+| 3.5 | ORG/REQ: mandatory organizational compliance review; REC: follow this standard | O: automated audit assists but does not certify completion |
+| 3.6 | REQ: the country's national language or Russian. PERM: national language and Russian in social sciences | C/L |
+| 4 | Order: title → contributors → abstract → contents → terms → abbreviations → introduction → main body → conclusion → sources → appendices. The original marks mandatory **title, contributors, abstract, contents, introduction, main body, conclusion** in bold. Select others with sections 5–6 in mind | C/P: exceptions 5.2.2, 5.4.3. Sources are not bold, but used documents require descriptions under 5.10, 6.9, 6.16 |
 
-## 5 Требования к содержанию
+## 5 Content requirements
 
-### 5.1 Титул
+### 5.1 Title page
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.1.1 | Т: первая страница; источник поисковых/учётных сведений | П |
-| 5.1.2 | Т при применимости: ведомство; полное/краткое имя исполнителя; УДК; регистрационные номера НИР и отчёта; согласование/утверждение с подписью руководителя, расшифровкой, печатью, датами; вид документа; имя НИР; имя отчёта; вид отчёта; шифр программы/темы; номер книги; должность/степень/звание/подпись/инициалы/фамилия руководителя(ей); место/год. Даты промежуточного — в интервале работы, заключительного — окончания | С/П/О: каждое поле. Сноски РФ о ЕГИСУ НИОКТР/ИКРБС/ЦИТиС не заменяют текущую регистрацию. Для учреждений образования допускаются дополнительные подписи декана/заведующего и др. |
-| 5.1.3 | Т: у каждой книги свой титул, согласованный с первым, с данными своей книги | С/П |
-| 5.1.4 | Т: 6.10; примеры А | Л/П |
+| 5.1.1 | REQ: first page; source of retrieval/registration information | P |
+| 5.1.2 | REQ when applicable: supervising authority; full/short performing-organization name; UDC; research/report registration numbers; endorsement/approval with head's signature, name, seal, dates; document type; research title; report title; report type; program/topic code; volume number; position/degree/academic title/signature/initials/surname of head(s); location/year. Interim dates fall within the work period; final dates refer to completion | C/P/O: every field. Russian footnotes about ЕГИСУ НИОКТР/ИКРБС/ЦИТиС do not replace current registration. Educational institutions may add dean/department-head signatures, etc. |
+| 5.1.3 | REQ: each volume has its own title page, consistent with the first, with that volume's data | C/P |
+| 5.1.4 | REQ: 6.10; examples in А | L/P |
 
-### 5.2 Исполнители
+### 5.2 Contributors
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.2.1 | Т: непосредственные участники — руководители, ответственные, исполнители, соисполнители; фамилии/инициалы, должности, степени, звания, подписи, роль в подготовке | С/О |
-| 5.2.2 | Т: при одном исполнителе его сведения на титуле, отдельного списка нет | С/Л: не создавать фиктивную команду |
-| 5.2.3 | О: нормоконтролёр проверяет нормы и единообразие всех элементов | О |
-| 5.2.4 | Т: оформление 6.11; примеры Б | Л/П |
+| 5.2.1 | REQ: direct participants — heads, responsible staff, contributors, co-contributors; surnames/initials, positions, degrees, academic titles, signatures, preparation roles | C/O |
+| 5.2.2 | REQ: for one contributor, place their details on the title page; no separate list | C/L: do not invent a team |
+| 5.2.3 | ORG: compliance reviewer checks rules and consistency of all elements | O |
+| 5.2.4 | REQ: formatting under 6.11; examples in Б | L/P |
 
-### 5.3 Реферат
+### 5.3 Abstract
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.3.1 | Т: общие требования ГОСТ 7.9 | С: внешний стандарт |
-| 5.3.2 | Т: общий объём, книги, рисунки, таблицы, источники, приложения; ключевые слова; текст | С/П: действительные общие итоги |
-| 5.3.2.1 | Т: 5–15 характерных ключевых слов/словосочетаний из текста | С: словосочетание — один элемент |
-| 5.3.2.2 | Т при наличии данных, в порядке: объект; цель; методы; результаты/новизна; применение; внедрение/рекомендации; экономическая эффективность или значимость; прогноз развития. Отсутствующий компонент пропустить, порядок сохранить. Р: оптимум 850 печатных знаков. Т: текст не более одной страницы | С/П: 850 не строгое число и не слова. Не сочинять эффективность. Шаблон консервативно удерживает весь реферат на одной странице |
-| 5.3.3 | Образцы В с поправкой ИУС 2–2019 | С/П: прописные ключевые слова |
+| 5.3.1 | REQ: general requirements of GOST 7.9 | C: external standard |
+| 5.3.2 | REQ: total length, volumes, figures, tables, sources, appendices; keywords; text | C/P: actual overall totals |
+| 5.3.2.1 | REQ: 5–15 characteristic keywords/phrases from the text | C: a phrase is one item |
+| 5.3.2.2 | REQ when data exists, in order: subject; goal; methods; results/novelty; application; implementation/recommendations; economic efficiency or significance; development outlook. Omit absent components, preserve order. REC: optimal 850 printed characters. REQ: text no longer than one page | C/P: 850 is not strict and does not mean words. Do not invent efficiency. The template conservatively keeps the entire abstract on one page |
+| 5.3.3 | Examples in В with correction ИУС 2–2019 | C/P: uppercase keywords |
 
-### 5.4 Содержание
+### 5.4 Contents
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.4.1 | Т: введение, разделы/подразделы, озаглавленные пункты, заключение, источники, приложения с начальными страницами. Номера/названия совпадают с текстом, отточие. Подразделы на два знака правее разделов, пункты на четыре. Продолжение заголовка под началом заголовка первой строки, для приложения — от уровня его обозначения | Л/П: автоматическое содержание; проверить длинные строки |
-| 5.4.2 | Т: содержание каждой книги; в первой — всего отчёта с номерами книг, в остальных — своей книги. Д: в первой вместо подробного содержания последующих книг только их названия | С/Л/П |
-| 5.4.3 | Д: при объёме ≤10 страниц содержание можно не составлять | П: итоговый объём после сборки, включая титул |
-| 5.4.4 | Т: 6.13 | Л/П |
+| 5.4.1 | REQ: introduction, sections/subsections, titled clauses, conclusion, sources, appendices with starting pages. Numbers/titles match the text; dot leaders. Subsections indented two character positions relative to sections, clauses four. Continued titles align under the start of the first-line title; appendix continuation aligns at its designation level | L/P: automatic contents; check long lines |
+| 5.4.2 | REQ: contents in each volume; first covers the whole report with volume numbers, others cover their own volume. PERM: first volume may list only later volumes' titles instead of their detailed contents | C/L/P |
+| 5.4.3 | PERM: contents may be omitted for reports of ≤10 pages | P: final compiled length, including title page |
+| 5.4.4 | REQ: 6.13 | L/P |
 
-### 5.5 Термины и определения
+### 5.5 Terms and definitions
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.5.1 | Определения для уточнения/установления используемых терминов | С |
-| 5.5.2 | Т при наличии элемента: вводная фраза о применяемых в настоящем отчёте терминах с соответствующими определениями | С/Л: точная фраза в latex-workflow.md |
-| 5.5.3 | Т: 6.14 | Л/П |
+| 5.5.1 | Definitions clarify/establish terms used | C |
+| 5.5.2 | REQ if element is present: introductory phrase about terms and corresponding definitions used in this report | C/L: exact phrase in latex-workflow.md |
+| 5.5.3 | REQ: 6.14 | L/P |
 
-### 5.6 Сокращения и обозначения
+### 5.6 Abbreviations and symbols
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.6.1 | Т при наличии элемента: вводная фраза о применяемых в настоящем отчёте сокращениях и обозначениях | С/Л: точная фраза в latex-workflow.md |
-| 5.6.2 | Т: более трёх требующих пояснения обозначений — перечень с пояснениями; учитываются специальные сокращения, единицы, символы. Д: объединение в «ОПРЕДЕЛЕНИЯ, ОБОЗНАЧЕНИЯ И СОКРАЩЕНИЯ» | С |
-| 5.6.3 | Т: менее трёх — без перечня; пояснить в тексте/подстрочном примечании при первом упоминании. Для **ровно трёх** 5.6.2/5.6.3 явно вариант не определяют | С: руководствоваться локальными правилами или явно выбранным решением; не приписывать норме «три и более» |
-| 5.6.4 | Т: 6.15 | Л/П |
+| 5.6.1 | REQ if element is present: introductory phrase about abbreviations and symbols used in this report | C/L: exact phrase in latex-workflow.md |
+| 5.6.2 | REQ: more than three symbols needing explanation require an explanatory list; includes special abbreviations, units, symbols. PERM: combine as “ОПРЕДЕЛЕНИЯ, ОБОЗНАЧЕНИЯ И СОКРАЩЕНИЯ” | C |
+| 5.6.3 | REQ: fewer than three — no list; explain in text/footnote at first mention. For **exactly three**, 5.6.2/5.6.3 do not explicitly specify a choice | C: follow local rules or state an explicit choice; do not attribute “three or more” to the standard |
+| 5.6.4 | REQ: 6.15 | L/P |
 
-### 5.7 Введение
+### 5.7 Introduction
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.7.1 | Т: современное состояние проблемы, основание/исходные данные, необходимость НИР, планируемый научно-технический уровень, патентные исследования/выводы, метрологическое обеспечение, актуальность/новизна, связи с другими НИР | С: применимость патентных/метрологических сведений обосновать, не фабриковать |
-| 5.7.2 | Т для промежуточного: цели/задачи этапа, его место в общей НИР | С |
-| 5.7.3 | Т для заключительного: имена промежуточных отчётов и регистрационные номера, если представлялись на регистрацию | С/О |
+| 5.7.1 | REQ: current problem state, basis/input data, research necessity, planned scientific/technical level, patent studies/conclusions, metrological support, relevance/novelty, links to other research | C: justify applicability of patent/metrology information; do not fabricate |
+| 5.7.2 | REQ for interim reports: stage goals/tasks and place within overall research | C |
+| 5.7.3 | REQ for final reports: interim report titles and registration numbers if submitted for registration | C/O |
 
-### 5.8 Основная часть
+### 5.8 Main body
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.8.1 | Т: сущность, методика и основные результаты НИР | С |
-| 5.8.2 | Т: обоснование направления, методы/сравнение, общая методика; теория/эксперимент, методы расчёта, необходимость эксперимента, принципы действия/характеристики объектов; обобщение/полнота решения, дальнейшие работы, достоверность, эффективность внедрения, сравнение с отечественными/зарубежными работами, необходимость дополнительных исследований, отрицательные результаты, влекущие прекращение исследований | С: проверять каждый применимый компонент; не скрывать отрицательные результаты |
-| 5.8.3 | Т: единицы по ГОСТ 8.417 | С/Л: применимая редакция внешнего стандарта |
+| 5.8.1 | REQ: research substance, methodology, and main results | C |
+| 5.8.2 | REQ: rationale for direction, methods/comparison, overall methodology; theory/experiment, calculation methods, need for experiment, operating principles/object characteristics; synthesis/completeness of solution, further work, reliability, implementation efficiency, comparison with domestic/foreign work, need for further research, negative results warranting termination | C: check each applicable component; do not hide negative results |
+| 5.8.3 | REQ: units under GOST 8.417 | C/L: applicable edition of external standard |
 
-### 5.9 Заключение
+### 5.9 Conclusion
 
-Т: краткие выводы по работе/этапам; полнота решения задач; рекомендации и исходные данные для использования; оценка технико-экономической эффективности внедрения; научно-технический уровень относительно лучших достижений. Проверка С: выводы связаны с целью и результатами, новых неподтверждённых чисел нет.
+REQ: brief conclusions on work/stages; completeness of task resolution; recommendations and input data for use; assessment of technical/economic implementation efficiency; scientific/technical level relative to best achievements. Check C: conclusions relate to the goal and results, with no new unsupported numbers.
 
-### 5.10 Источники
+### 5.10 Sources
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.10.1 | Т при источниках: действительные использованные документы, описания по ГОСТ 7.1, 7.80, 7.82 с учётом раздела 2 | С: проверить метаданные |
-| 5.10.2 | Т: библиографические записи использованных документов; арабские отсылки в квадратных скобках; 6.16 | С/Л/П |
+| 5.10.1 | REQ when sources exist: actually used documents, descriptions under GOST 7.1, 7.80, 7.82 accounting for section 2 | C: verify metadata |
+| 5.10.2 | REQ: bibliographic entries for used documents; Arabic references in square brackets; 6.16 | C/L/P |
 
-### 5.11 Приложения
+### 5.11 Appendices
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 5.11.1 | Р: дополняющее, неудобное для основного текста — в приложения. Возможны допматериалы, доказательства/расчёты, вспомогательные таблицы, испытания, метрологические заключения, инструкции/методики/алгоритмы/программы, рисунки, ТЗ/программы/исходные документы, протокол НТС, акты внедрения, охранные документы | С: допустимые виды, не обязанность включить каждый |
-| 5.11.2 | Д при патентных исследованиях: соответствующие материалы в отчёте о патентных исследованиях по ГОСТ 15.011; список публикаций/патентов результатов по библиографическим стандартам | С: отдельно проверить внешний стандарт |
-| 5.11.3 | Т: 6.17 | Л/П |
+| 5.11.1 | REC: supplementary material inconvenient in the main text goes into appendices. May include extra material, proofs/calculations, auxiliary tables, tests, metrological conclusions, instructions/methods/algorithms/programs, figures, specifications/programs/source documents, scientific/technical council minutes, implementation certificates, protection documents | C: allowed types, not an obligation to include all |
+| 5.11.2 | PERM for patent studies: corresponding material in a patent-study report under GOST 15.011; lists of resulting publications/patents under bibliographic standards | C: check external standard separately |
+| 5.11.3 | REQ: 6.17 | L/P |
 
-## 6 Оформление
+## 6 Formatting
 
-### 6.1 Общие требования
+### 6.1 General requirements
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.1.1: бумага | Т: A4 для текста/рисунков/таблиц, белая бумага, одна сторона листа. Д: A3 при большом количестве соответствующих таблиц/рисунков | Л/П/О: 210×297 мм, A3 297×420 мм; landscape A4 не равно A3; PDF не доказывает способ печати |
-| 6.1.1: интервал | Т: полуторный; Д: одинарный для **заключительного** отчёта **500 и более страниц** | Л/П: не применять к любому длинному промежуточному |
-| 6.1.1: шрифт | Т: чёрный, ≥12 пт; Р: Times New Roman основного текста. Полужирный только для заголовков разделов/подразделов/структурных элементов. Д: курсив для обозначения объектов и латинских терминов; иной рисунок для акцента при той же гарнитуре/кегле; другие гарнитуры для терминов/формул/теорем | Л/П: консервативно не делать bold в обычном тексте/шапке таблицы. Математика не обязана быть TNR; 14 пт не обязательны |
-| 6.1.1: геометрия | Т: слева 30, справа 15, сверху/снизу 20 мм; единый абзацный отступ 1,25 см | Л/П: частные исключения «без отступа» сохраняются; рамку/штамп норма не устанавливает |
-| 6.1.2 | Т: чёткое воспроизведение текста, рисунков, таблиц, распечаток программ | П: качество, наложения, знаки |
-| 6.1.3 | Т: равномерная плотность/чёткость, сопоставимая контрастность всех знаков/линий | П/О |
-| 6.1.4 | Т: собственные имена на языке оригинала. Д: транслитерация, перевод организаций с оригиналом при первом упоминании по ГОСТ 7.79 | С/Л |
-| 6.1.5 | Т: сокращения по ГОСТ 7.11, 7.12; Беларусь — СТБ 7.12 | С |
+| 6.1.1: paper | REQ: A4 for text/figures/tables, white paper, single-sided. PERM: A3 for large quantities of relevant tables/figures | L/P/O: 210×297 mm, A3 297×420 mm; landscape A4 is not A3; PDF does not prove printing method |
+| 6.1.1: spacing | REQ: one-and-a-half. PERM: single spacing for a **final** report of **500 or more pages** | L/P: do not apply to every long interim report |
+| 6.1.1: font | REQ: black, ≥12 pt; REC: Times New Roman for body text. Bold only for section/subsection/structural headings. PERM: italics for objects and Latin terms; alternate style for emphasis within the same family/size; other families for terms/formulas/theorems | L/P: conservatively avoid bold in ordinary text/table headers. Math need not use TNR; 14 pt is not mandatory |
+| 6.1.1: geometry | REQ: left 30, right 15, top/bottom 20 mm; uniform paragraph indent 1.25 cm | L/P: retain specific no-indent exceptions; no frame/title block is prescribed |
+| 6.1.2 | REQ: clear reproduction of text, figures, tables, program printouts | P: quality, overlaps, symbols |
+| 6.1.3 | REQ: uniform density/clarity, comparable contrast of all characters/lines | P/O |
+| 6.1.4 | REQ: proper names in original language. PERM: transliteration, translated organization names with original at first mention under GOST 7.79 | C/L |
+| 6.1.5 | REQ: abbreviations under GOST 7.11, 7.12; Belarus — СТБ 7.12 | C |
 
-### 6.2 Построение
+### 6.2 Organization
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.2.1 | Т: структурные заголовки по центру, прописными, без точки/подчёркивания; каждый структурный элемент и раздел основной части с новой страницы | Л/П: введение/заключение не нумеровать |
-| 6.2.2 | Т: основная часть разделами/подразделами/пунктами, при необходимости подпунктами; разделы/подразделы имеют заголовки; пункты/подпункты обычно без них | С/Л |
-| 6.2.3 | Т: заголовки разделов/подразделов после номера, с отступа 1,25 см, с прописной, bold, без подчёркивания/конечной точки. Пункты/подпункты могут иметь только номер с отступа | Л/П |
-| 6.2.4 | Т: предложения в заголовке через точку; перенос слова запрещён | Л/П: перенос целого слова на другую строку допустим |
+| 6.2.1 | REQ: structural headings centered, uppercase, without final period/underline; each structural element and main-body section starts a new page | L/P: do not number introduction/conclusion |
+| 6.2.2 | REQ: main body in sections/subsections/clauses, subclauses if needed; sections/subsections have headings; clauses/subclauses usually do not | C/L |
+| 6.2.3 | REQ: section/subsection headings after number, indented 1.25 cm, initial capital, bold, no underline/final period. Clauses/subclauses may have only an indented number | L/P |
+| 6.2.4 | REQ: sentences in a heading separated by periods; word hyphenation prohibited | L/P: moving a whole word to the next line is not hyphenation |
 
-### 6.3 Страницы
+### 6.3 Pagination
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.3.1 | Т: арабская сквозная пагинация, включая приложения, в центре внизу без точки. Д: вложенные приложения с собственными номерами не перенумеровывать | Л/П: согласовать исключение со ссылками |
-| 6.3.2 | Т: титул в счёте, номер скрыт | Л/П: после одностраничного титула — 2; `titlepage` может сбросить счётчик |
-| 6.3.3 | Т: отдельные листы рисунков/таблиц в общем счёте; лист A3 считается одной страницей | Л/П |
+| 6.3.1 | REQ: continuous Arabic pagination including appendices, centered at bottom without period. PERM: do not renumber included appendices with their own numbering | L/P: reconcile exception with references |
+| 6.3.2 | REQ: title page counted, number hidden | L/P: after a one-page title comes 2; `titlepage` may reset the counter |
+| 6.3.3 | REQ: separate figure/table sheets included in total count; A3 sheet counts as one page | L/P |
 
-### 6.4 Нумерация и перечисления
+### 6.4 Numbering and lists
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.4.1 | Т: разделы 1, 2…; подразделы 1.1…; точки между компонентами, без точки после номера, с абзацного отступа | Л |
-| 6.4.2 | Т: без подразделов пункты внутри раздела 1.1…; с подразделами — 1.1.1… | С/Л: выбирать LaTeX-уровень по структуре |
-| 6.4.3 | Т: единственный пункт раздела/подраздела не нумеруется | С: это не запрет номера единственного рисунка/раздела |
-| 6.4.4 | Т: при делении текста только на пункты — порядковая сквозная нумерация | С/Л: отдельный режим |
-| 6.4.5 | Д: подпункты, нумерация внутри пункта, например 4.2.1.1 | Л |
-| 6.4.6 | Т: перечисления столбцом с отступа, знак тире. Для отсылок — строчные русские буквы со скобкой, исключая ё, з, й, о, ч, ъ, ы, ь. Д: цифры со скобкой при конкретном числе элементов. Простые элементы через запятую, сложные через точку с запятой | С/Л/П: bullet/латинское a) не равнозначны |
-| 6.4.7 | Т: краткий точный заголовок; предложения разделены точкой | С |
-| 6.4.8 | Т: каждая книга с порядковым номером, на титуле под видом отчёта, например «Книга 2» | С/П |
+| 6.4.1 | REQ: sections 1, 2…; subsections 1.1…; periods between components, none after number; paragraph indent | L |
+| 6.4.2 | REQ: without subsections, clauses within a section are 1.1…; with subsections, 1.1.1… | C/L: choose LaTeX level according to structure |
+| 6.4.3 | REQ: a sole clause within a section/subsection is not numbered | C: does not prohibit numbering a sole figure/section |
+| 6.4.4 | REQ: text divided only into clauses uses continuous sequential numbering | C/L: separate mode |
+| 6.4.5 | PERM: subclauses numbered within a clause, e.g. 4.2.1.1 | L |
+| 6.4.6 | REQ: lists in an indented column with dashes. For references, lowercase Russian letters with closing parenthesis, excluding ё, з, й, о, ч, ъ, ы, ь. PERM: numbers with closing parenthesis for a specific item count. Simple items separated by commas, complex by semicolons | C/L/P: bullets/Latin a) are not equivalent |
+| 6.4.7 | REQ: short precise heading; sentences separated by periods | C |
+| 6.4.8 | REQ: each volume has a sequential number on the title page below report type, e.g. “Книга 2” | C/P |
 
-### 6.5 Рисунки
+### 6.5 Figures
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.5.1 | Т: сразу после первого упоминания или на следующей странице, близко к тексту; ссылка на каждый словом «рисунок» и номером | С/П: одного `label` недостаточно |
-| 6.5.2 | Т: чертежи/графики/схемы/диаграммы по применимым стандартам ЕСКД | С/П: пакет построения не доказывает ЕСКД |
-| 6.5.3 | Т: достаточно для пояснения; Р: избегать объёмных рисунков | С/П: нет заданных числа и DPI |
-| 6.5.4 | Т: сквозные арабские номера; один — «Рисунок 1» | Л |
-| 6.5.5 | Т: отдельные номера в приложениях, например А.3 | Л |
-| 6.5.6 | Д: в пределах раздела, например 2.1 | Л |
-| 6.5.7 | Д: название/пояснения при необходимости. Т: «Рисунок», номер, тире и название при наличии; после пояснений, под рисунком, центр, без конечной точки | Л/П: без названия не добавлять пустое тире |
-| 6.5.8 | Т: многострочная подпись одинарная, с прописной, без точки/переноса слов | Л/П |
+| 6.5.1 | REQ: immediately after first mention or on next page, near the text; refer to each using “рисунок” and number | C/P: a `label` alone is insufficient |
+| 6.5.2 | REQ: drawings/graphs/schematics/charts under applicable ЕСКД standards | C/P: plotting software does not establish ЕСКД compliance |
+| 6.5.3 | REQ: enough to explain; REC: avoid bulky figures | C/P: no specified count or DPI |
+| 6.5.4 | REQ: continuous Arabic numbering; a sole figure is “Рисунок 1” | L |
+| 6.5.5 | REQ: separate appendix numbering, e.g. А.3 | L |
+| 6.5.6 | PERM: numbering within sections, e.g. 2.1 | L |
+| 6.5.7 | PERM: title/explanations when needed. REQ: “Рисунок”, number, dash and title if present; after explanations, below figure, centered, no final period | L/P: without a title, do not add an empty dash |
+| 6.5.8 | REQ: multiline caption single-spaced, initial capital, no final period/word hyphenation | L/P |
 
-### 6.6 Таблицы
+### 6.6 Tables
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.6.1 | Т: цифровой материал таблицами для наглядности/сравнения | С |
-| 6.6.2 | Т: после первого упоминания либо на следующей странице; ссылка на каждую словом «таблица» с номером | С/П |
-| 6.6.3 | Т при названии: над таблицей слева без отступа, кратко/точно, с прописной, без точки; несколько строк одинарно. Форма «Таблица 1 — Название» подтверждена рисунком-образцом, не вставлять лишнее тире перед номером из словесной схемы. Д: перенос таблицы. Т при переносе: полное название только над первой частью; далее слева «Продолжение таблицы 1». Д: вместо головки/боковика номера граф/строк, пронумерованные в первой части | Л/П: `longtable`; проверить границы частей и повтор головки |
-| 6.6.4 | Т: сквозные номера; в приложениях отдельно А.1…; единственная 1 или А.1. Д: в большом отчёте номера внутри раздела 2.3 | Л |
-| 6.6.5 | Т: заголовки граф/строк с прописной, подзаголовки со строчной при продолжении предложения, иначе с прописной; без точек, в единственном числе | С/П |
-| 6.6.6 | Т: внешние линии со всех сторон; диагональные разделители заголовков/подзаголовков запрещены; заголовки граф центр, строк — влево. Д: внутренние линии можно опускать без ущерба пользованию | Л/П: чистый booktabs без боковых линий не выполняет обрамление |
-| 6.6.7 | Повторяющееся одиночное слово заменяют кавычками; повторяющийся текст сначала «то же», затем кавычки. Нельзя кавычки вместо цифр, буквенно-цифровых обозначений, знаков/символов. Д: шрифт таблицы меньше основного | С/П: минимум уменьшенного табличного шрифта здесь не дан; читаемость обязательна |
+| 6.6.1 | REQ: numerical material in tables for clarity/comparison | C |
+| 6.6.2 | REQ: after first mention or on next page; refer to each with “таблица” and number | C/P |
+| 6.6.3 | REQ when titled: above table, left, no indent, short/precise, initial capital, no final period; multiline titles single-spaced. “Таблица 1 — Название” is confirmed by the example figure; do not insert an extra dash before the number from the verbal pattern. PERM: split tables. REQ when split: full title only over first part; subsequent parts left-aligned “Продолжение таблицы 1”. PERM: replace headers/stub with column/row numbers assigned in the first part | L/P: `longtable`; check part boundaries and repeated headers |
+| 6.6.4 | REQ: continuous numbers; separately А.1… in appendices; sole table 1 or А.1. PERM: section-based numbers such as 2.3 in large reports | L |
+| 6.6.5 | REQ: column/row headings with initial capital, subheadings lowercase if continuing a sentence, otherwise capitalized; no periods, singular | C/P |
+| 6.6.6 | REQ: outer borders on all sides; diagonal heading/subheading dividers prohibited; column headings centered, row headings left. PERM: omit internal lines without impairing use | L/P: plain booktabs without side borders does not meet the outer-border rule |
+| 6.6.7 | Replace a repeated single word with quotation marks; repeated text first with “то же”, then quotation marks. Do not substitute quotation marks for numbers, alphanumeric designations, signs/symbols. PERM: table font smaller than body text | C/P: no minimum reduced table font specified here; readability remains mandatory |
 
-### 6.7 Примечания и сноски
+### 6.7 Notes and footnotes
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.7.1 | Пояснения/справочные данные к тексту/таблице/рисунку — примечания | С |
-| 6.7.2 | Т: «Примечание» с прописной, с абзацного отступа, без подчёркивания | Л/П |
-| 6.7.3 | Т: непосредственно после объекта; одно «Примечание — Текст», без номера; несколько — арабские номера без точки | Л/П |
-| 6.7.4 | Д: сноска. Т: знак без пробела после фрагмента, надстрочная арабская цифра; Д: звёздочка. Т: низ той же страницы, с абзацного отступа, короткая тонкая сплошная линия слева | Л/П: обычный `footnote` проверить по PDF |
+| 6.7.1 | Explanatory/reference information for text/table/figure is a note | C |
+| 6.7.2 | REQ: “Примечание” with initial capital, paragraph indent, no underline | L/P |
+| 6.7.3 | REQ: immediately after the object; a single “Примечание — Текст” without number; multiple notes use Arabic numbers without periods | L/P |
+| 6.7.4 | PERM: footnote. REQ: mark without a space after the passage, superscript Arabic numeral; PERM: asterisk. REQ: bottom of same page, paragraph indent, short thin solid line on left | L/P: check ordinary `footnote` in PDF |
 
-### 6.8 Формулы
+### 6.8 Equations
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.8.1 | Т: отдельная строка, минимум одна свободная строка сверху/снизу. Перенос после =, +, −, ×, :, другого математического знака с повтором знака на новой строке; при переносе на умножении × | Л/П: выровненные строки, повторить знак |
-| 6.8.2 | Т: пояснения сразу под формулой, в порядке символов/коэффициентов; каждый с новой строки; первая начинается с абзаца «где» без двоеточия | С/Л/П |
-| 6.8.3 | Т: центр строки, сквозной арабский номер в круглых скобках у правого края, единственная (1) | Л/П: без fleqn/leqno |
-| 6.8.4 | Т: ссылка с круглыми скобками, например «в формуле (1)» | Л: `eqref` |
-| 6.8.5 | Т: в приложениях А.1…; Д: в основной части нумерация внутри раздела (3.1) | Л |
+| 6.8.1 | REQ: separate line, at least one blank line above/below. Break after =, +, −, ×, :, or another mathematical sign, repeating sign on next line; use × when breaking at multiplication | L/P: aligned lines, repeat the sign |
+| 6.8.2 | REQ: explanations immediately below, in symbol/coefficient order; each on a new line; first starts an indented paragraph with “где” without colon | C/L/P |
+| 6.8.3 | REQ: centered, continuous Arabic number in parentheses at right edge; sole equation (1) | L/P: no fleqn/leqno |
+| 6.8.4 | REQ: reference with parentheses, e.g. “в формуле (1)” | L: `eqref` |
+| 6.8.5 | REQ: А.1… in appendices; PERM: numbering within main-body sections (3.1) | L |
 
-### 6.9 Ссылки
+### 6.9 References
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.9.1 | Р: приводить ссылки на использованные источники. Т при нумерации: сквозная по отчёту либо отдельным разделам, арабские цифры в квадратных скобках в конце фрагмента, номер соответствует записи списка | С/Л: по умолчанию общая последовательность, согласованная с 6.16 |
-| 6.9.2 | Т: ссылка на документ целиком либо его разделы/приложения | С: например `[9], раздел 5` |
-| 6.9.3 | Т: обозначение стандарта/ТУ; Д: без года при полном описании в списке по библиографическим правилам | С |
+| 6.9.1 | REC: cite used sources. REQ when numbering: continuous across report or individual sections, Arabic numbers in square brackets at passage end, matching bibliography entry | C/L: default is one overall sequence consistent with 6.16 |
+| 6.9.2 | REQ: refer to a whole document or its sections/appendices | C: e.g. `[9], раздел 5` |
+| 6.9.3 | REQ: standard/technical specification designation; PERM: omit year when full bibliographic description is in the source list | C |
 
-### 6.10 Титул: размещение
+### 6.10 Title-page layout
 
-Все реквизиты ниже раскрывают **6.10.1**. Одинарный интервал внутри блока и два интервала между указанными блоками — не произвольные 2 см.
+All fields below expand **6.10.1**. Single spacing within blocks and two line intervals between specified blocks do not mean an arbitrary 2 cm.
 
-| Реквизит | Правило | Проверка |
+| Field | Rule | Check |
 |---|---|---|
-| Ведомство | Полное имя с прописной наверху, блоки один под другим по центру | С/П |
-| Исполнитель | Полное имя прописными по центру, одинарно; сокращённое отдельной строкой в скобках прописными по центру, одинарно | С/П: исторические образцы могут отличаться регистром, приоритет тексту |
-| УДК/номера | Один под другим слева, одинарно; от имени организации до УДК два интервала | С/П |
-| Грифы | Через два интервала ниже номеров. «СОГЛАСОВАНО» слева, «УТВЕРЖДАЮ» справа. Должность/степень/звание, личная подпись синими чернилами, инициалы/фамилия, дата, печать; внутри одинарно | С/П/О: пустая линия не доказывает подписания |
-| Даты | День/месяц по две цифры, год четыре, через точки. Д: словесно-цифровые | С/П |
-| Вид документа | Через два интервала после грифов, по центру, прописными: первая строка «ОТЧЕТ», следующая «О НАУЧНО-ИССЛЕДОВАТЕЛЬСКОЙ РАБОТЕ», одинарно | П |
-| НИР | Имя с первой прописной, далее строчными, по центру, одинарно | С/П: сохранять собственные имена |
-| Отчёт | Перед названием отдельная строка «по теме:» строчными; название прописными, центр, одинарно. Если имена НИР и отчёта совпадают — одно прописное название без «по теме:» | С/П |
-| Вид/этап | Строчными в скобках; промежуточный и номер этапа через запятую в тех же скобках | С/П |
-| Шифр | С прописной по центру, одинарно | С/П |
-| Книга | С первой прописной «Книга 2», под видом отчёта | П |
-| Руководитель(и) | Слева должности/степени/звания, середина для подписей, справа инициалы/фамилии | С/П/О |
-| Продолжение титула | Если подписи не помещаются — дополнительный лист. Справа вверху дополнительного «Продолжение титульного листа», справа внизу первого «Продолжение на следующем листе» | П: не сжимать весь титул; скрытие номера продолжения согласовать как трактовку титульного блока |
-| Место/год | Центр внизу, разделены пробелом; при продолжении только на первом листе | С/П |
-| 6.10.2 | Схема в Г справочная | П: приоритет норме 6.10.1 |
+| Supervising authority | Full name with initial capital at top, blocks stacked and centered | C/P |
+| Performing organization | Full name uppercase, centered, single-spaced; short name on a separate line in parentheses, uppercase, centered, single-spaced | C/P: historical examples may differ in case; normative text takes priority |
+| UDC/numbers | Stacked on left, single-spaced; two intervals from organization name to UDC | C/P |
+| Endorsement/approval | Two intervals below numbers. “СОГЛАСОВАНО” left, “УТВЕРЖДАЮ” right. Position/degree/academic title, personal signature in blue ink, initials/surname, date, seal; single-spaced within | C/P/O: an empty line does not prove signing |
+| Dates | Two digits each for day/month, four for year, dot-separated. PERM: verbal/numeric dates | C/P |
+| Document type | Two intervals after endorsements, centered, uppercase: first line “ОТЧЕТ”, next “О НАУЧНО-ИССЛЕДОВАТЕЛЬСКОЙ РАБОТЕ”, single-spaced | P |
+| Research | Title with initial capital, then lowercase, centered, single-spaced | C/P: retain proper names |
+| Report | Separate lowercase “по теме:” line before title; title uppercase, centered, single-spaced. If research and report titles match, one uppercase title without “по теме:” | C/P |
+| Type/stage | Lowercase in parentheses; interim designation and stage number separated by a comma within the same parentheses | C/P |
+| Code | Initial capital, centered, single-spaced | C/P |
+| Volume | Initial capital, “Книга 2”, below report type | P |
+| Head(s) | Positions/degrees/academic titles left, signatures in middle, initials/surnames right | C/P/O |
+| Title-page continuation | If signatures do not fit, add a sheet. Upper right of extra sheet: “Продолжение титульного листа”; lower right of first: “Продолжение на следующем листе” | P: do not shrink entire title; agree on hiding continuation number as an interpretation of the title block |
+| Place/year | Bottom center, separated by a space; with continuation, only on first sheet | C/P |
+| 6.10.2 | Diagram in Г is informative | P: 6.10.1 takes priority |
 
-### 6.11–6.16 Прочие элементы
+### 6.11–6.16 Other elements
 
-Группа 6.12 содержит оформление трёх компонентов реферата; её подпункты приведены раздельно ниже.
+Group 6.12 covers formatting of the abstract's three components; its subclauses appear separately below.
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.11 | Т: список столбцом в порядке должностей; слева должность/степень/звание, середина для подлинных подписей, справа инициалы/фамилии; рядом с фамилией в скобках разделы/подразделы участия; внешним соисполнителям организация | С/П/О: Б, исправленное «Исполнители» |
-| 6.12.1 | Т: статистика первой компонентой реферата, с абзаца в строку через запятые | С/П: сверить общий объём всех книг |
-| 6.12.2 | Т: ключевые слова в именительном падеже, прописными, строкой через запятые, без отступа/переноса слов/конечной точки | С/П |
-| 6.12.3 | Т: текст после ключевых слов с абзаца, структурные компоненты отдельными абзацами | С/П |
-| 6.13 | Т: запись содержания отдельным абзацем влево, страницы вправо, отточие между | Л/П |
-| 6.14 | Т: термины столбцом, без конечной пунктуации; слева без отступа алфавитно, справа через тире определения. Д: две колонки термин/определение | С/П |
-| 6.15 | Т: сокращения/символы/обозначения/единицы столбцом без конечной пунктуации; слева без отступа алфавитно, справа через тире полная расшифровка | С/П |
-| 6.16 | Т: источники в порядке первого появления ссылок, арабские номера **с точкой**, с абзацного отступа. Примеры Д/Е справочные | С/Л/П: в тексте `[1]`, в списке `1.`; образец Д без видимой точки не отменяет основной текст |
+| 6.11 | REQ: contributors in a column by position; position/degree/academic title left, genuine signatures in middle, initials/surname right; participating sections/subsections in parentheses beside surname; organizations for external co-contributors | C/P/O: Б, corrected “Исполнители” |
+| 6.12.1 | REQ: statistics as first abstract component, an indented paragraph with comma-separated items | C/P: verify total length across all volumes |
+| 6.12.2 | REQ: keywords in nominative case, uppercase, comma-separated line, no indent/word hyphenation/final period | C/P |
+| 6.12.3 | REQ: text after keywords starts with paragraph indent; structural components in separate paragraphs | C/P |
+| 6.13 | REQ: each contents entry a separate left-aligned paragraph, pages right, dot leaders between | L/P |
+| 6.14 | REQ: terms in a column, no final punctuation; alphabetic left column without indent, definitions right after a dash. PERM: two columns, term/definition | C/P |
+| 6.15 | REQ: abbreviations/symbols/designations/units in a column without final punctuation; alphabetic left column without indent, full explanation right after a dash | C/P |
+| 6.16 | REQ: sources in first-citation order, Arabic numbers **with periods**, paragraph indent. Examples Д/Е informative | C/L/P: `[1]` in text, `1.` in list; example Д without a visible period does not override normative text |
 
-### 6.17 Приложения
+### 6.17 Appendices
 
-| Пункт | Норма и условия | Проверка |
+| Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.17.1 | Д: графика, таблицы до A3, расчёты, алгоритмы/программы; продолжение отчёта или отдельная книга | С/П |
-| 6.17.2 | Т: ссылка на каждое приложение, порядок по ссылкам | С/Л |
-| 6.17.3 | Т: новое приложение с новой страницы; «ПРИЛОЖЕНИЕ» по центру вверху, отдельной строкой заголовок с прописной, bold, по центру, без точки | Л/П |
-| 6.17.4 | Т: прописные кириллические А, Б… кроме Ё, З, Й, О, Ч, Ъ, Ы, Ь. Д: латиница кроме I, O; после исчерпания алфавита арабские цифры. Единственное всё равно А | Л: стандартный `Alph` и некоторые `Asbuk` не подходят |
-| 6.17.5 | Обычно A4; Д: A3 | П |
-| 6.17.6 | Д: внутренняя структура; Т: номера с буквой приложения А.1…; общая сквозная пагинация отчёта | Л/П |
-| 6.17.7 | Т: каждое приложение в содержании, если оно есть, с обозначением/статусом/названием | С/Л/П: исчерпывающий набор статусов авторских приложений стандартом не задан; выбрать осмысленно |
+| 6.17.1 | PERM: graphics, tables up to A3, calculations, algorithms/programs; report continuation or separate volume | C/P |
+| 6.17.2 | REQ: reference every appendix, in reference order | C/L |
+| 6.17.3 | REQ: each appendix starts a new page; “ПРИЛОЖЕНИЕ” centered at top, title on separate line, initial capital, bold, centered, no period | L/P |
+| 6.17.4 | REQ: uppercase Cyrillic А, Б… except Ё, З, Й, О, Ч, Ъ, Ы, Ь. PERM: Latin except I, O; after alphabet exhaustion, Arabic numbers. A sole appendix is still А | L: standard `Alph` and some `Asbuk` implementations do not fit |
+| 6.17.5 | Usually A4; PERM: A3 | P |
+| 6.17.6 | PERM: internal structure; REQ: numbers prefixed by appendix letter А.1…; continuous report pagination | L/P |
+| 6.17.7 | REQ: each appendix in contents, if present, with designation/status/title | C/L/P: the standard does not define an exhaustive status set for authored appendices; choose meaningfully |
 
-## Приложения самого стандарта
+## Appendices of the standard itself
 
-| Приложение | Статус | Что учесть |
+| Appendix | Status | Considerations |
 |---|---|---|
-| А | Обязательное | Пять образцов: промежуточный с разными именами НИР/отчёта и программой; образовательная организация с совпадающими именами; автономное учреждение с этапом/разными именами; книга 2 заключительного; коммерческая организация с двумя грифами. Выбрать случай, заменить все данные; исторические подписи/учреждения не переносить |
-| Б | Обязательное | Одна организация и с соисполнителями. Должностной порядок, подписи/даты, участие, организации, нормоконтроль. Учесть поправку 2019; не считать нормоконтролёра научным исполнителем автоматически |
-| В | Обязательное | Однокнижный/многокнижный реферат: общие числа, ключевые слова, абзацы; прописные по поправке. Числа/объекты/результаты образцов не являются нормативами нового отчёта |
-| Г | Справочное | Взаимное положение реквизитов, поля 20/30/15/20 мм; не универсальные координаты каждой строки. Приоритет 6.10 |
-| Д | Справочное | Порядок/состав записей; основной текст 6.16 имеет приоритет над типографскими отличиями примера |
-| Е | Справочное | Статьи, книги, тезисы/конференции, патенты по ВОИС, электронные ресурсы, нормативные документы; не полный библиографический стандарт и не источник действующих URL |
+| А | Mandatory | Five examples: interim with differing research/report titles and program; educational organization with matching titles; autonomous institution with stage/differing titles; volume 2 of final report; commercial organization with two endorsements. Choose the case and replace all data; do not transfer historical signatures/institutions |
+| Б | Mandatory | Single organization and co-contributors. Position order, signatures/dates, participation, organizations, compliance review. Account for 2019 correction; do not automatically classify compliance reviewer as research contributor |
+| В | Mandatory | Single-/multi-volume abstract: overall counts, keywords, paragraphs; uppercase per correction. Example counts/objects/results are not normative values for a new report |
+| Г | Informative | Relative field layout, margins 20/30/15/20 mm; not universal coordinates for every line. Section 6.10 takes priority |
+| Д | Informative | Entry order/composition; normative text 6.16 takes priority over example typography |
+| Е | Informative | Articles, books, abstracts/conferences, WIPO patents, electronic resources, normative documents; not a complete bibliographic standard or source of current URLs |
 
-## Решения, которые нельзя выдавать за числа ГОСТ
+## Choices that must not be presented as GOST numerical requirements
 
-В: 14 bp; конкретная математическая гарнитура; 21 bp между базовыми линиями основного текста шаблона; расстояния вокруг заголовков/до подвала; толщина линий; DPI; глубина PDF-закладок. ГОСТ не требует именно 14 пт или строго TNR, 300 DPI, ровно 850 знаков, заполнения каждого листа до низа, универсального студенческого титула. Отсутствие численного параметра не отменяет читаемости и специальных правил элемента.
+TPL: 14 bp; a specific math font; 21 bp body-text baseline spacing; heading/footer distances; line thickness; DPI; PDF bookmark depth. GOST does not require exactly 14 pt or strictly TNR, 300 DPI, exactly 850 characters, filling every page to its bottom, or a universal student title page. Absence of a numerical parameter does not remove readability requirements or element-specific rules.

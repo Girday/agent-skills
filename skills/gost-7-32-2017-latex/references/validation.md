@@ -1,15 +1,15 @@
-# Проверка поставки skill
+# Skill Distribution Validation
 
-Дата: 28.10.2026. Это свидетельство проверки конкретного шаблона и скриптов, не разрешение считать любой будущий документ соответствующим ГОСТ.
+Date: October 28, 2026. This records validation of a specific template and scripts, not permission to consider every future document GOST-compliant.
 
-- Штатный `quick_validate.py`: skill valid; YAML/имя/структура проверены.
-- Карта требований: сопоставлены 128 подлинных нумерованных пунктов/групп заголовков разделов 3, 5, 6 из скана; пропусков идентификаторов нет. Разделы 1, 2, 4 и приложения А–Е рассмотрены отдельно. Само наличие идентификатора не доказывает полноту пересказа; содержимое прочитано и сверено с правилами, жирное выделение обязательных элементов и повёрнутая поправка просмотрены на изображениях.
-- XeLaTeX, TeX Live 2025, macOS, Times New Roman; математический шрифт `latinmodern-math.otf`. Демонстрационный отчёт: 8 страниц, стабильные ссылки, нет overfull, missing glyphs и предупреждений LaTeX. Небольшие underfull в отдельных строках допустимы после визуального просмотра.
-- Испытательный документ: 9 страниц; таблица из 70 строк с продолжениями на с. 4, 5, 6; повтор головки/границы; многострочная запись приложения в содержании; сноска; перечисления/примечания; заголовки без добавленной русским языковым пакетом конечной точки после номера.
-- Проверены метки рисунков/формул 1.1, 2.1, А.1; таблицы 1.1, Б.1; последовательность 25 кириллических букв с исключениями и переход к цифрам после её исчерпания.
-- Реальные размеры демонстрационного PDF — A4; объявленные поля 30/15/20/20 мм, абзац 12,5 мм, основной шрифт 14 bp; анализ текстовых границ и номеров страниц без обнаруженных нарушений. Все 8 страниц демонстрации и 9 страниц испытательного документа просмотрены; после исправления отступов списков повторно просмотрена затронутая страница.
-- `init_project.py` отказал в перезаписи существующего проекта, контрольный хеш исходника не изменился.
-- Отрицательные проверки: `audit.py` обнаружил PDF с испорченным MediaBox; обнаружил оставшийся старый PDF при финальном логе без успешного вывода.
-- Доступны исходники и команды для LuaLaTeX, но данная поставка фактически проверена XeLaTeX. A3, многокнижный режим, biber, продолжение титула и внешние нормативные стандарты не прошли отдельные исполняемые испытания; инструкции описывают необходимые действия/проверки и не заявляют их автоматическое выполнение.
+- Standard `quick_validate.py`: skill valid; YAML/name/structure checked.
+- Requirements map: compared 128 actual numbered clauses/heading groups in sections 3, 5, 6 against the scan; no missing identifiers. Sections 1, 2, 4 and appendices А–Е reviewed separately. Identifier presence alone does not prove paraphrase completeness; content was read and compared against rules, mandatory-element bold emphasis and the rotated correction were inspected in images.
+- XeLaTeX, TeX Live 2025, macOS, Times New Roman; math font `latinmodern-math.otf`. Demonstration report: 8 pages, stable references, no overfull, missing glyphs, or LaTeX warnings. Small underfull warnings on some lines accepted after visual review.
+- Test document: 9 pages; 70-row table continuing on pp. 4, 5, 6; repeated headers/borders; multiline appendix contents entry; footnote; lists/notes; headings without a final period after the number added by the Russian language package.
+- Verified figure/equation labels 1.1, 2.1, А.1; tables 1.1, Б.1; sequence of 25 Cyrillic letters with exclusions and transition to numbers after exhaustion.
+- Actual demonstration PDF size A4; declared margins 30/15/20/20 mm, indent 12.5 mm, body font 14 bp; text-boundary and page-number analysis found no violations. All 8 demonstration pages and 9 test pages visually reviewed; the affected page rechecked after list-indent fixes.
+- `init_project.py` refused to overwrite an existing project; the source's control hash was unchanged.
+- Negative checks: `audit.py` detected a PDF with corrupted MediaBox; detected a stale PDF left behind when the final log did not indicate successful output.
+- LuaLaTeX sources and commands are available, but this distribution was actually tested with XeLaTeX. A3, multiple volumes, biber, title-page continuation, and external normative standards did not receive separate executable trials; instructions describe necessary actions/checks without claiming automatic execution.
 
-Начальный шаблон намеренно содержит незаполненные реквизиты и должен получить `FAIL` по полноте данных до их замены. Демонстрационный PDF использует условную организацию/имена и учебные наблюдения, не является утверждённым отчётом о НИР. Результаты научной работы и организационный нормоконтроль не сертифицированы.
+The starter intentionally has unfilled administrative fields and should receive `FAIL` for data completeness until replaced. The demonstration PDF uses fictional organization/names and educational observations; it is not an approved research report. Scientific results and organizational compliance review are not certified.
