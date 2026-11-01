@@ -20,6 +20,8 @@ From the request and available materials, identify:
 
 Do not repeat answered questions. If the goal is unknown, ask one question about the future work; meanwhile, you may catalog the materials. For an overview without a specific task, state that purpose and do not invent an implementation plan. If the environment is unknown, prepare portable Markdown and state the assumption. Respect the requested format, path, and budget.
 
+Keep your source access separate from the recipient's. If they receive only the output, do not claim that they can open your original files or require those files for the next step. Include the needed information and use original paths only for attribution unless access is established.
+
 ## 2. Inspect the input materials
 
 Start with a source inventory and its structure. Before detailed reading, locate the task statement, current requirements, document contents, versions, and work status. Then read the passages on which the result depends.
@@ -41,6 +43,8 @@ Distinguish:
 - **Work status**: what is done, how it was checked, and what remains.
 
 Attach a source and precise locator to each significant claim: page, section, cell range, message, or code symbol with revision. Group citations for related facts when provenance remains unambiguous. Do not assign confidence percentages without measurement.
+
+Keep what a source reports separate from what you verified. Missing evidence leaves completion unverified; it does not establish failure or non-completion. An unapproved proposal may still be pending: record rejection only when a source establishes it.
 
 For conflicts, record both versions, their scope, and the basis for choosing. Determine requirement priority from the current request and the authors' authority. A newer date or the name `final` alone does not establish authority; different versions may describe different periods. If an unresolved conflict affects the result, retain it as an open question and continue independent work.
 
