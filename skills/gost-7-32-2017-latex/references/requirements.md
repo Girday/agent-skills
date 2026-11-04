@@ -135,7 +135,7 @@ REQ: brief conclusions on work/stages; completeness of task resolution; recommen
 
 | Clause | Rule and conditions | Check |
 |---|---|---|
-| 6.3.1 | REQ: continuous Arabic pagination including appendices, centered at bottom without period. PERM: do not renumber included appendices with their own numbering | L/P: reconcile exception with references |
+| 6.3.1 | REQ: continuous Arabic pagination including appendices, centered at the bottom of the physical sheet without period, not centered within asymmetric text margins. PERM: do not renumber included appendices with their own numbering | L/P: reconcile exception with references |
 | 6.3.2 | REQ: title page counted, number hidden | L/P: after a one-page title comes 2; `titlepage` may reset the counter |
 | 6.3.3 | REQ: separate figure/table sheets included in total count; A3 sheet counts as one page | L/P |
 
@@ -266,4 +266,4 @@ Group 6.12 covers formatting of the abstract's three components; its subclauses 
 
 ## Choices that must not be presented as GOST numerical requirements
 
-TPL: 14 bp; a specific math font; 21 bp body-text baseline spacing; heading/footer distances; line thickness; DPI; PDF bookmark depth. GOST does not require exactly 14 pt or strictly TNR, 300 DPI, exactly 850 characters, filling every page to its bottom, or a universal student title page. Absence of a numerical parameter does not remove readability requirements or element-specific rules.
+TPL: 14 bp; a specific math font; 21 bp body-text baseline spacing; heading distances and vertical footer distance; line thickness; DPI; PDF bookmark depth. GOST does not require exactly 14 pt or strictly TNR, 300 DPI, exactly 850 characters, filling every page to its bottom, or a universal student title page. Absence of a numerical parameter does not remove readability requirements or element-specific rules.

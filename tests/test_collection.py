@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import pdfplumber
 from pypdf import PdfReader, PdfWriter
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -167,6 +168,114 @@ class AuditTests(unittest.TestCase):
 
 @unittest.skipUnless(builder.engine_path("xelatex"), "XeLaTeX not installed")
 class LatexIntegrationTests(unittest.TestCase):
+    def test_long_appendix_contents_keep_spacing_and_page_leaders(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copy2(SKILL / "assets/template/gost732.sty", root / "gost732.sty")
+            shutil.copy2(ROOT / "tests/fixtures/gost-contents.tex", root / "main.tex")
+            result = subprocess.run(
+                [sys.executable, str(SKILL / "scripts/build.py"), str(root)],
+                capture_output=True,
+                text=True,
+                timeout=180,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            log = (root / "build/main.log").read_text()
+            self.assertNotIn("Overfull", log)
+            with pdfplumber.open(root / "build/main.pdf") as doc:
+                self.assertEqual(len(doc.pages), 6)
+                toc = doc.pages[1]
+                lines = [line for line in toc.extract_text_lines() if line["top"] < 750]
+                for previous, following in zip(lines, lines[1:]):
+                    self.assertGreaterEqual(following["top"] - previous["top"], 20.5)
+                for page in (4, 5, 6):
+                    entry = next(line for line in lines if line["text"].endswith(f" {page}"))
+                    self.assertGreaterEqual(entry["text"].count("."), 2)
+                    self.assertAlmostEqual(entry["x1"], toc.width - 15 * 72 / 25.4, delta=1)
+            source = (root / "main.tex").read_text()
+            (root / "main.tex").write_text(
+                source.replace(r"\begin{document}", r"\setcounter{tocdepth}{-1}\begin{document}")
+            )
+            result = subprocess.run(
+                [sys.executable, str(SKILL / "scripts/build.py"), str(root)],
+                capture_output=True,
+                text=True,
+                timeout=180,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            with pdfplumber.open(root / "build/main.pdf") as doc:
+                self.assertNotIn("ПРИЛОЖЕНИЕ", doc.pages[1].extract_text())
+
+    def test_page_numbers_use_sheet_center_after_margin_changes(self):
+        fixture = (ROOT / "tests" / "fixtures" / "gost-pagination.tex").read_text()
+        old_footer = (
+            r"\makeatletter"
+            r"\renewcommand\ps@plain{"
+            r"\let\@oddhead\@empty\let\@evenhead\@empty"
+            r"\def\@oddfoot{\normalfont\normalsize\hfil\thepage\hfil}"
+            r"\let\@evenfoot\@oddfoot}"
+            r"\pagestyle{plain}"
+            r"\makeatother"
+        )
+        engine = "xelatex"
+        for centered_on_sheet in (False, True):
+            with self.subTest(engine=engine, centered_on_sheet=centered_on_sheet):
+                with tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory)
+                    shutil.copy2(SKILL / "assets/template/gost732.sty", root / "gost732.sty")
+                    source = fixture
+                    if not centered_on_sheet:
+                        source = source.replace(
+                            r"\begin{document}", old_footer + "\n" + r"\begin{document}"
+                        )
+                        source = source.replace(
+                            r"\begin{GostTitlePage}",
+                            r"\begin{GostTitlePage}\thispagestyle{plain}",
+                        )
+                    (root / "main.tex").write_text(source)
+                    result = subprocess.run(
+                        [
+                            sys.executable,
+                            str(SKILL / "scripts/build.py"),
+                            str(root),
+                            "--engine",
+                            engine,
+                        ],
+                        capture_output=True,
+                        text=True,
+                        timeout=180,
+                    )
+                    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                    with pdfplumber.open(root / "build/main.pdf") as doc:
+                        self.assertEqual(len(doc.pages), 3)
+                        for number, page in enumerate(doc.pages[1:], 2):
+                            words = [
+                                w
+                                for w in page.extract_words()
+                                if w["text"] == str(number) and w["top"] > page.height - 60
+                            ]
+                            self.assertEqual(len(words), 1)
+                            center = (words[0]["x0"] + words[0]["x1"]) / 2
+                            offset_mm = abs(center - page.width / 2) * 25.4 / 72
+                            if centered_on_sheet:
+                                self.assertLess(offset_mm, 0.5)
+                            else:
+                                self.assertGreater(offset_mm, 7)
+                    audit = subprocess.run(
+                        [sys.executable, str(SKILL / "scripts/audit.py"), str(root)],
+                        capture_output=True,
+                        text=True,
+                    )
+                    checks = json.loads(audit.stdout)["checks"]
+                    title = next(c for c in checks if c["rule"] == "6.3.2.title_number")
+                    self.assertEqual(title["status"], "PASS" if centered_on_sheet else "FAIL")
+                    pagination = next(c for c in checks if c["rule"] == "6.3.1.pdf_pagination")
+                    self.assertEqual(
+                        pagination["status"], "PASS" if centered_on_sheet else "REVIEW"
+                    )
+                    if not centered_on_sheet:
+                        self.assertEqual(pagination["evidence"], [2, 3])
+
     def test_numbering_longtable_and_appendix_alphabet(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

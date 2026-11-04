@@ -18,7 +18,7 @@ Choose a profile:
 1. **Research report under the standard** — all applicable rules and explicitly selected permitted alternatives.
 2. **Coursework adaptation** — formatting follows the user's/institution's assignment; record differences from GOST in a separate note.
 
-If the user requires a deviation, follow the request and name the specific difference. Do not attribute a university rule to GOST. Defaults: A4, single-sided printing, 14 bp, Times New Roman when available, one-and-a-half line spacing, continuous figure/table/equation numbering. **14 bp is a template choice; GOST requires at least 12 pt. Times New Roman is recommended.** Math fonts, heading spacing, and footer position are also template choices.
+If the user requires a deviation, follow the request and name the specific difference. Do not attribute a university rule to GOST. Defaults: A4, single-sided printing, 14 bp, Times New Roman when available, one-and-a-half line spacing, continuous figure/table/equation numbering. **14 bp is a template choice; GOST requires at least 12 pt. Times New Roman is recommended.** Math fonts, heading spacing, and the footer's vertical distance are also template choices. Center page numbers on the physical sheet under 6.3.1, not on the text area between asymmetric margins.
 
 ## Implementation
 

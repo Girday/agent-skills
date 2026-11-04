@@ -4,6 +4,8 @@
 
 `assets/template/` contains `main.tex`, `metadata.tex`, `title.tex`, and `gost732.sty`. This is a single-volume XeLaTeX/LuaLaTeX example, not a completed report. `metadata.tex` has visible unfilled fields; do not use demonstration research results as real data. Required packages: `extreport`, `fontspec`, `polyglossia`, `unicode-math`, `geometry`, `amsmath`, `graphicx`, `array`, `longtable`, `caption`, `indentfirst`, `etoolbox`, `hyperref`. Install missing packages only when necessary and in an authorized environment.
 
+For LuaLaTeX, `unicode-math` also needs `lualatex-math`; a minimal TeX installation may have the engine without this dependency. Lua font loading requires a writable cache (`TEXMFVAR` can point to a temporary directory). Distinguish these environment failures from a template defect; do not claim an engine was tested merely because its executable exists.
+
 Body text: 14 bp, baselines 21 bp apart. This is a fixed implementation of the selected one-and-a-half spacing, not a numerical GOST definition. Compare actual output for agreement with Word/local compliance review; do not multiply spacing again through `setspace`. Single-spaced blocks: 14/16.8 bp; footnotes/small text: 12/14.4 bp. `bp` = 1/72 inch; TeX `pt` = 1/72.27 inch. Distinguish them when measuring PDFs.
 
 `gost732.sty` selects TNR, then explicitly warns about substitution with Liberation Serif/CMU Serif; Latin Modern Math is an allowed implementation choice. Do not embed unlicensed font files in the delivered project.
@@ -32,6 +34,8 @@ Body text: 14 bp, baselines 21 bp apart. This is a fixed implementation of the s
 | Source citation | `\GostCite{src:key}` | Square brackets; verify actual metadata |
 
 For clause-only division or sections without subsections, deliberately adapt counters/commands under 6.4.2–6.4.4. Do not create a fictitious level merely for number appearance. Headings do not end with periods; multiple sentences may have internal periods. The template suppresses word hyphenation in headings/captions, but an excessively long word can still exceed margins.
+
+If overriding contents entries, check inter-entry baselines as well as wrapping, dot leaders, and the page-number column. Inline bottom-aligned `parbox` blocks can collapse spacing between entries. The bundled appendix entries use paragraphs with ragged-right continuation lines and space reserved for visible leaders and page numbers.
 
 By default, figures/tables/equations use continuous numbering, independent of `chapter` resets. For section-based numbering, call `\GostNumberWithinSections` in the preamble. Within appendices, numbers are А.1, etc.; do not call `\chapter` in an appendix; start its sections with `\section` (А.1). Do not mix Cyrillic А with Latin A in displayed numbers. `label` identifiers may use Latin letters.
 

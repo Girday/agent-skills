@@ -155,12 +155,12 @@ def main():
                 words = page.extract_words()
                 footer_words = [w for w in words if w["top"] * PDF_BP_MM > height - 18]
                 nums = [w for w in footer_words if w["text"] == str(n)]
-                center = (30 + width - 15) / 2
+                center = width / 2
                 centered = [
                     w for w in nums if abs((w["x0"] + w["x1"]) / 2 * PDF_BP_MM - center) < 3
                 ]
                 if n == 1:
-                    first_has_number = bool(centered)
+                    first_has_number = bool(nums)
                 elif not centered:
                     footers.append(n)
             add(
@@ -178,15 +178,15 @@ def main():
             add(
                 "6.3.2.title_number",
                 "FAIL" if first_has_number else "PASS",
-                "Detected centered page 1 footer"
+                "Detected page 1 footer"
                 if first_has_number
-                else "No centered page 1 footer detected; title identity needs review",
+                else "No page 1 footer detected; title identity needs review",
             )
             add(
                 "6.3.1.pdf_pagination",
                 "REVIEW" if footers else "PASS",
                 footers
-                or "Centered physical page numbers 2..N detected; title continuations/inserts require manual review",
+                or "Page numbers 2..N detected at physical sheet centers; title continuations/inserts require manual review",
             )
             add(
                 "5.4.3.contents_exception",

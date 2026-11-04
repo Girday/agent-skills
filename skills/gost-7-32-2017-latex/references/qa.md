@@ -31,7 +31,7 @@ If Poppler cannot find fontconfig, provide a **temporary** configuration with sy
 | Unfilled data | Template markers in `.tex` | Does not recognize all placeholders; skips comments |
 | Actual formats | MediaBox through pdfplumber | A3 allowed only when applicable; rotation accounted for |
 | Text boundaries | PDF character coordinates | Not all graphics/lines; 0.8 mm tolerance; footer analyzed separately; REVIEW requires inspection |
-| Pagination | Physical pages 2..N and footer center | Title continuation, inserts with own numbering, multiple volumes/initial N need manual analysis |
+| Pagination | Physical pages 2..N and physical sheet center, independent of asymmetric margins | Title continuation, inserts with own numbering, multiple volumes/initial N need manual analysis |
 
 `audit.py` requires only the standard library; additional geometry checks use `pdfplumber` when available. Without it, those checks report `NOT_CHECKED`. Exit 0 means “no detected errors in performed checks”; `certified` is always false. Exit 1 indicates a detected error; 2 means no build. The demonstration template should fail for unfilled data until fields are replaced.
 

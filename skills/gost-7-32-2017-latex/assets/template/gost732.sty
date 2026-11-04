@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{gost732}[2026/10/28 Research report layout]
+\ProvidesPackage{gost732}[2026/11/04 Research report layout]
 \RequirePackage{iftex}
 \ifPDFTeX\PackageError{gost732}{Use XeLaTeX or LuaLaTeX}{Unicode fonts are required}\fi
 \RequirePackage{fontspec}
@@ -42,11 +42,18 @@
 \setlength\parindent{12.5mm}
 \setlength\parskip{0pt}
 \setlength\emergencystretch{2em}
+% Center on the physical sheet, including when local rules change the margins.
+% Chapters reapply plain locally, so configure the style itself.
+\renewcommand\ps@plain{%
+  \let\@mkboth\@gobbletwo
+  \let\@oddhead\@empty\let\@evenhead\@empty
+  \def\@oddfoot{\normalfont\normalsize
+    \hspace*{\dimexpr.5\paperwidth-1in-\hoffset-\oddsidemargin\relax}%
+    \makebox[0pt][c]{\thepage}\hfil}%
+  \def\@evenfoot{\normalfont\normalsize
+    \hspace*{\dimexpr.5\paperwidth-1in-\hoffset-\evensidemargin\relax}%
+    \makebox[0pt][c]{\thepage}\hfil}}
 \pagestyle{plain}
-\renewcommand\@oddfoot{\normalfont\normalsize\hfil\thepage\hfil}
-\let\@evenfoot\@oddfoot
-\let\@oddhead\@empty
-\let\@evenhead\@empty
 \newcommand\GostNoHyphen{\hyphenpenalty=10000\exhyphenpenalty=10000}
 \renewcommand\@makechapterhead[1]{%
   {\parindent=0pt\raggedright\normalfont\normalsize\bfseries\GostNoHyphen
@@ -65,7 +72,18 @@
 \renewcommand\l@section{\@dottedtocline{1}{\gosttocstep}{3em}}
 \renewcommand\l@subsection{\@dottedtocline{2}{2\gosttocstep}{4em}}
 \newcommand\l@goststruct{\@dottedtocline{0}{0pt}{0pt}}
-\newcommand\l@gostappendix{\@dottedtocline{0}{0pt}{0pt}}
+% Ragged-right continuation lines preserve word spaces and a visible leader.
+\newcommand\l@gostappendix[2]{%
+  \ifnum0>\c@tocdepth\else
+  \vskip\z@\@plus.2\p@
+  {\parindent\z@\leftskip\z@
+   \rightskip\@tocrmarg plus1fil\parfillskip-\@tocrmarg
+   \interlinepenalty\@M\leavevmode
+   #1\nobreak\hskip.5em
+   \leaders\hbox{$\m@th\mkern\@dotsep mu\hbox{.}\mkern\@dotsep mu$}%
+   \hskip1em plus1fill\nobreak
+   \hb@xt@\@pnumwidth{\hfil\normalfont\normalcolor #2}\par}%
+  \fi}
 \def\toclevel@goststruct{0}
 \def\toclevel@gostappendix{0}
 \newcommand\GostStructural[1]{\chapter*{#1}\phantomsection\addcontentsline{toc}{goststruct}{#1}}

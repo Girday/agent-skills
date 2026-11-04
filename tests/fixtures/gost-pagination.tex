@@ -1,0 +1,13 @@
+\documentclass[14pt,a4paper,oneside]{extreport}
+\usepackage{gost732}
+\begin{document}
+\begin{GostTitlePage}
+\begin{center}Проверка положения номера страницы\end{center}
+\end{GostTitlePage}
+\chapter{Первый раздел}
+Первое поле: 30 мм слева, 15 мм справа.
+\clearpage
+\newgeometry{left=35mm,right=15mm,top=20mm,bottom=20mm}
+\chapter{Второй раздел}
+Изменённое поле: 35 мм слева, 15 мм справа.
+\end{document}
