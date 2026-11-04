@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prepare Lab Defense"
+  short_description: "Practice explaining completed labs and their code"
+  default_prompt: "Use $prepare-lab-defense to help me understand and explain my completed lab from my current level, rehearse an oral defense, and revisit difficulties later."

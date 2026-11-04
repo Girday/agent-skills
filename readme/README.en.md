@@ -12,6 +12,7 @@ Practical skills for AI agents: instructions, scripts, templates, and checks tha
 |---|---|---|
 | [build-agent-context](../skills/build-agent-context/) | Turns archives, documents, messages, links, or a repository into task-focused agent context with source traceability, reading routes, current state, and handoff checks | User's language; Markdown; source-reading tools depend on input formats |
 | [transcribe-recording](../skills/transcribe-recording/) | Transcribes meetings, talks, interviews and classes; checks speakers and prepares timestamped material for context | Windows, Linux and macOS; faster-whisper on CPU/CUDA, optional MLX on Apple Silicon |
+| [prepare-lab-defense](../skills/prepare-lab-defense/) | Practices oral defenses of completed programming, numerical and graphics labs through learning from zero, mock defense and delayed review | User’s language; assignment, code and results; no required runtime |
 | [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Creates and reviews research reports in LaTeX using GOST 7.32-2017: title pages, structure, equations, tables, references, appendices, and PDF checks | Russian template; Python 3.10+ and XeLaTeX or LuaLaTeX; optional `pdfplumber` |
 
 Skill instructions and agent-facing references are maintained in English. Agents respond in the user's language unless asked otherwise; artifact language follows the task. Exact wording required by standards, templates, or sources is preserved. The GOST template remains Russian, and transcripts retain the recorded language unless translation is requested.
@@ -71,6 +72,24 @@ The skill chooses between a self-contained document and a short entrypoint with 
 - [Output patterns and worked examples](../skills/build-agent-context/references/output-patterns.md)
 - [Quality checks and behavioral evaluation scenarios](../skills/build-agent-context/references/quality-checks.md)
 - [Validation performed and limitations](../skills/build-agent-context/references/validation.md)
+
+## Practice a lab defense
+
+```text
+Use $prepare-lab-defense. Help me prepare an oral defense of this completed
+lab. I may be new to the topic: explain the task and then one small step
+at a time. Use my assignment, code and results.
+```
+
+Choose guided learning from zero, a mock defense without hints, or delayed review of
+previous difficulties. The skill covers programming and computational subjects,
+including numerical methods and computer graphics. It links theory to actual
+code, records assistance separately from independent answers, and saves a short
+preparation state in an agreed private location. A defense guide is optional.
+Procedure checks do not establish learning effectiveness; that needs actual
+student sessions and later unassisted recall.
+[Examples and prompts](../skills/prepare-lab-defense/references/domain-examples.md) ·
+[Validation scope](../skills/prepare-lab-defense/references/validation.md)
 
 ## Use the GOST skill
 
