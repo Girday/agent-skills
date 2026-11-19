@@ -10,6 +10,7 @@ Des compétences pratiques pour les agents d’IA : instructions, scripts, modè
 
 | Compétence | Fonction | Langue et prérequis |
 |---|---|---|
+| [stop-slop](../skills/stop-slop/) | Révise les réponses de l’assistant pour retirer les clichés et clarifier les références et le jargon | Contexte de la conversation |
 | [build-agent-context](../skills/build-agent-context/) | Transforme archives, documents, échanges, liens et dépôts en contexte de travail avec traçabilité des sources, parcours de lecture, état et contrôles de transmission | Langue de l’utilisateur ; Markdown ; outils de lecture selon les formats |
 | [transcribe-recording](../skills/transcribe-recording/) | Transcrit réunions, conférences, entretiens et cours ; vérifie les locuteurs et prépare des sources horodatées pour le contexte | Windows, Linux et macOS ; faster-whisper sur CPU/CUDA, MLX en option sur Apple Silicon |
 | [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Prépare et révise des rapports de recherche en LaTeX selon GOST 7.32-2017 : couverture, structure, équations, tableaux, références, annexes et contrôles PDF | Modèle en russe ; Python 3.10+ et XeLaTeX ou LuaLaTeX ; `pdfplumber` facultatif |

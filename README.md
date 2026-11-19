@@ -12,6 +12,7 @@ Developed with assistance from OpenAI Codex.
 
 | Skill | What it does | Language / requirements |
 |---|---|---|
+| [stop-slop](skills/stop-slop/) | Reviews assistant replies for boilerplate, unclear references and unexplained jargon | Conversation context |
 | [build-agent-context](skills/build-agent-context/) | Turns archives, documents, messages, links, or a repository into task-focused agent context with source traceability, reading routes, current state, and handoff checks | User's language; Markdown; source-reading tools depend on input formats |
 | [transcribe-recording](skills/transcribe-recording/) | Transcribes meetings, talks, interviews and classes; checks speakers and prepares timestamped material for context | Windows, Linux and macOS; faster-whisper on CPU/CUDA, optional MLX on Apple Silicon |
 | [gost-7-32-2017-latex](skills/gost-7-32-2017-latex/) | Creates and reviews research reports in LaTeX using GOST 7.32-2017: title pages, structure, equations, tables, references, appendices, and PDF checks | Russian template; Python 3.10+ and XeLaTeX or LuaLaTeX; optional `pdfplumber` |

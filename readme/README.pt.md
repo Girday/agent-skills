@@ -10,6 +10,7 @@ Habilidades práticas para agentes de IA: instruções, scripts, modelos e verif
 
 | Habilidade | Função | Idioma e requisitos |
 |---|---|---|
+| [stop-slop](../skills/stop-slop/) | Revisa respostas do assistente para remover clichês e esclarecer referências e jargão | Contexto da conversa |
 | [build-agent-context](../skills/build-agent-context/) | Converte arquivos compactados, documentos, mensagens, links e repositórios em contexto de trabalho com fontes rastreáveis, percursos de leitura, estado e verificações de transferência | Idioma do usuário; Markdown; ferramentas de leitura conforme o formato |
 | [transcribe-recording](../skills/transcribe-recording/) | Transcreve reuniões, palestras, entrevistas e aulas; verifica os falantes e prepara fontes com marcações de tempo para contexto | Windows, Linux e macOS; faster-whisper em CPU/CUDA, MLX opcional em Apple Silicon |
 | [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Prepara e revisa relatórios de pesquisa em LaTeX segundo GOST 7.32-2017: capa, estrutura, equações, tabelas, referências, apêndices e PDF | Modelo em russo; Python 3.10+ e XeLaTeX ou LuaLaTeX; `pdfplumber` opcional |

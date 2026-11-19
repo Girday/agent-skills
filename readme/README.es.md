@@ -10,6 +10,7 @@ Herramientas prácticas para agentes de IA: instrucciones, scripts, plantillas y
 
 | Habilidad | Función | Idioma y requisitos |
 |---|---|---|
+| [stop-slop](../skills/stop-slop/) | Revisa respuestas del asistente para eliminar fórmulas vacías y aclarar referencias y jerga | Contexto de la conversación |
 | [build-agent-context](../skills/build-agent-context/) | Convierte archivos, documentos, mensajes, enlaces y repositorios en contexto para una tarea, con fuentes, rutas de lectura, estado y comprobaciones de entrega | Idioma del usuario; Markdown; herramientas de lectura según el formato |
 | [transcribe-recording](../skills/transcribe-recording/) | Transcribe reuniones, ponencias, entrevistas y clases; comprueba los hablantes y prepara material con marcas de tiempo para contexto | Windows, Linux y macOS; faster-whisper en CPU/CUDA, MLX opcional en Apple Silicon |
 | [gost-7-32-2017-latex](../skills/gost-7-32-2017-latex/) | Prepara y revisa informes de investigación en LaTeX según GOST 7.32-2017: portada, estructura, fórmulas, tablas, bibliografía, anexos y PDF | Plantilla en ruso; Python 3.10+ y XeLaTeX o LuaLaTeX; `pdfplumber` opcional |
